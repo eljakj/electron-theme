@@ -1,0 +1,103 @@
+/*
+Home main-slider
+/////////////////////////////////*/
+.electron-main-slider .electron-slide-inner {
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    text-align: left;
+    position: relative;
+}
+
+.electron-main-slider .electron-slide-inner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.electron-main-slider .slide-item-content {
+    max-width: 600px;
+    z-index: 1;
+}
+
+.electron-main-slider .electron-slide-inner.has-overlay:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.electron-slide-head {
+    font-size: 48px;
+    margin: 0;
+    color:var(--electron-light);
+}
+
+.electron-slide-text {
+    font-size: 18px;
+    margin: 30px 0;
+    color:var(--electron-light);
+}
+
+.electron-slide-link-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.electron-slideshow .style-btn {
+	position: relative;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 1em 2em;
+	display: block;
+	color: var(--electron-dark);
+	background:var(--electron-light);
+	transition: color 0.3s, background 0.3s;
+}
+
+.electron-swiper-theme-style.electron-main-slider .swiper-pagination-bullets {
+    position: absolute;
+    top: auto;
+    left: 45px;
+    bottom: 40px;
+    right: 0;
+    text-align: center;
+    margin: 0px;
+    text-align: left;
+}
+
+.electron-main-slider .has-animation:not(.animated) {
+    visibility: hidden;
+}
+.electron-slide-price {
+    font-size: 16px;
+    color: var(--electron-light);
+    background: var(--electron-red);
+    display: inline-block;
+    padding: 5px 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.electron-slide-text {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 30px 0;
+    color: var(--electron-light);
+}
+/*
+Home main-slider End
+/////////////////////////////////*/

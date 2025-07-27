@@ -1,0 +1,59 @@
+.electron-canvas-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    height: 100%;
+    overflow-y: auto;
+    background-color: var(--electron-light);
+    z-index: 101;
+    padding: 60px 15px 30px 15px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-box-shadow: 0 15px 30px -4px rgb(0 0 0 / 9%);
+    -moz-box-shadow: 0 15px 30px -4px rgba(0,0,0,.09);
+    box-shadow: 0 15px 30px -4px rgb(0 0 0 / 17%);
+    will-change: transform;
+}
+
+.electron-canvas-menu.active {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s cubic-bezier(.19,1,.22,1),visibility 0.4s cubic-bezier(.19,1,.22,1),right 0.4s cubic-bezier(.19,1,.22,1);
+}
+.admin-bar .electron-canvas-menu {
+    top: 32px;
+    height: calc(100% - 32px);
+}
+.electron-canvas-menu .panel-close {
+    position: absolute;
+    top: 20px;
+    right: 19px;
+}
+.canvas-menu .menu-label {
+    display: none;
+}
+.canvas-menu-inner {
+    display: flex;
+    height: 100%;
+    gap: 40px;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+    flex: 0 0 100%;
+    flex-direction: column;
+}
+
+@media(max-width:782px) {
+
+    .admin-bar .electron-canvas-menu {
+        top: 46px;
+    }
+}
+@media(max-width:480px) {
+	.electron-canvas-menu {
+        width: 100%;
+    }
+
+}

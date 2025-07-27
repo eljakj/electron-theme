@@ -1,0 +1,675 @@
+/*
+* Custom CSS
+*
+*/
+
+.elementor-add-section-area-button.elementor-add-electron-button {
+    margin-right: 5px;
+    background-image: url(../img/ninetheme.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+}
+i.electron.electron-addons.electron-library-open-icon {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 16px;
+    width: 16px;
+    position: relative;
+}
+
+/* ELEMENTOR CUSTOM COLUMN STRUCTURE */
+body.single-elementor_library.elementor-editor-active .electron-main-header,
+body.single-elementor_library.elementor-editor-active #nt-footer{
+    display: none;
+}
+.elementor-column {
+    min-height: 0px;
+}
+.elementor-widget:not(:last-child) {
+    margin-bottom: 0px;
+}
+
+[class^="elementor-widget-electron-"] .elementor-widget-empty-icon,
+[class*="elementor-widget-electron-"] .elementor-widget-empty-icon{
+    display: none!important;
+}
+
+.elementor-editor-active .loading {
+    display: none!important;
+}
+
+.mt-100vh{
+    margin-top: 100vh;
+}
+.min-100vh{
+    min-height: 100vh;
+}
+.pos-fixed {
+    position:fixed;
+}
+.electron-btn.is-block {
+    width: 100%;
+}
+
+.swiper-lazy {
+  opacity: 0;
+  transition: opacity 700ms ease-in-out;
+}
+
+.swiper-lazy-loaded {
+  opacity: 1 !important;
+}
+
+#particles-js {
+    position:absolute;
+    width: 100%;
+    height: 100vh;
+    top:0;
+    right:0;
+}
+
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+.electron-particles:not(.particles-none) div.electron-particles-effect {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    right:0;
+}
+.electron-particles:not(.particles-none) div.electron-particles-effect canvas {
+    display: block;
+    vertical-align: bottom;
+}
+
+/* sticky header */
+
+
+/* Reveal block */
+.electron-image-reveal .elementor-image {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.reveal-holder {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.reveal-holder .reveal-block {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 101%;
+  background: white;
+  z-index: 9;
+}
+.reveal-holder .reveal-block::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: lightgray;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
+.reveal-block.gradient::before {
+  background: -webkit-gradient(linear, left top, right top, from(#eebf56), to(#f46ca3));
+  background: linear-gradient(to right, #eebf56, #f46ca3);
+}
+
+.reveal-block.gradient-two::before {
+  background: -webkit-gradient(linear, left top, right top, from(#1b9edf), to(#af74c3));
+  background: linear-gradient(to right, #1b9edf, #af74c3);
+}
+
+.reveal-block.extra {
+  background: #1b9edf;
+}
+.reveal-block.extra::before {
+  background: #af74c3;
+}
+
+.reveal-block.top.aos-animate::before,
+.reveal-block.bottom.aos-animate::before {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
+.reveal-block.left.aos-animate::before,
+.reveal-block.right.aos-animate::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.reveal-block.top::before {
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: 0% 100%;
+          transform-origin: 0% 100%;
+}
+
+.reveal-block.left::before {
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: 100% 0%;
+          transform-origin: 100% 0%;
+}
+
+.reveal-block.right::before {
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: 0% 100%;
+          transform-origin: 0% 100%;
+}
+
+.reveal-block.bottom::before {
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: 100% 0%;
+          transform-origin: 100% 0%;
+}
+
+
+/* ====================== [ 10 Vegas Slider ] ====================== */
+
+/* vegas slider */
+.elementor-widget-electron-vegas-slider.elementor-invisible{
+    visibility: visible;
+}
+.home-slider-vegas-wrapper {
+  position : relative;
+  width    : 100%;
+  height   : 100vh;
+  overflow : hidden;
+}
+
+.nt-home-slider-vegas {
+  position : absolute;
+  top      : 0;
+  right     : 0;
+  width    : 100%;
+  height   : 100%!important;
+}
+
+.nt-vegas-slide-content {
+  display         : flex;
+  visibility      : hidden;
+  position        : absolute;
+  top             : 0;
+  left           : 0;
+  right            : 0;
+  height          : 100%;
+  padding         : 150px 0;
+  color           : var(--electron-light);
+  opacity         : 0;
+  text-align      : right;
+  align-items     : center;
+  justify-content : center;
+}
+
+.nt-vegas-slide-content.text-right {
+  text-align : left;
+}
+
+.nt-vegas-slide-content.text-center {
+  text-align : center;
+}
+
+.nt-vegas-slide-content.active {
+  visibility : visible;
+  position   : relative;
+  top        : auto;
+  left      : auto;
+  right       : auto;
+  opacity    : 1;
+}
+
+.nt-vegas-slide-content h1 {
+  visibility         : hidden;
+  color              : var(--electron-light);
+  opacity            : 0;
+  font-size          : 80px;
+  font-weight        : 700;
+  letter-spacing     : 2px;
+  -webkit-transition : opacity .5s,
+                       visibility .5s;
+  transition         : opacity .5s,
+                       visibility .5s;
+}
+
+.nt-vegas-slide-content.active .btn,
+.nt-vegas-slide-content.active h1 {
+  visibility : visible;
+  opacity    : 1;
+}
+
+.nt-vegas-overlay {
+  position : absolute;
+  top      : 0;
+  right     : 0;
+  width    : 100%;
+  height   : 100%;
+}
+
+.vegas-control .vegas-control-next,
+.vegas-control .vegas-control-prev {
+  display            : flex;
+  position           : absolute;
+  left              : 30px;
+  bottom             : auto;
+  bottom             : 30px;
+  right               : auto;
+  width              : 60px;
+  height             : 60px;
+  color              : var(--electron-light);
+  border             : 1px solid rgba(255, 255, 255, 0.5);
+  border-radius      : 0;
+  align-items        : center;
+  font-size          : 14px;
+  justify-content    : center;
+  -webkit-transition : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+  transition         : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+  cursor             : pointer;
+}
+
+.vegas-control .vegas-control-next:after,
+.vegas-control .vegas-control-prev:after {
+  display : none;
+}
+
+.vegas-control .vegas-control-next:hover,
+.vegas-control .vegas-control-prev:hover {
+  background : rgba(255, 255, 255, 0.1);
+}
+
+.vegas-control .vegas-control-btn i {
+  z-index            : 1;
+  -webkit-transition : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+  transition         : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+}
+
+.vegas-control .vegas-control-btn:before {
+  z-index            : 0;
+  content            : '';
+  position           : absolute;
+  top                : 0;
+  right               : 0;
+  width              : 45px;
+  width              : 0;
+  height             : 2px;
+  height             : 100%;
+  background         : var(--thm-primary);
+  -webkit-transition : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+  transition         : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+}
+
+.vegas-control .vegas-control-prev {
+  left: 30px;
+  bottom: 130px;
+}
+
+.vegas-control .vegas-control-next:hover:before,
+.vegas-control .vegas-control-prev:hover:before {
+  width : 100%;
+}
+
+.vegas-control .vegas-control-btn:hover i {
+  color : #000;
+}
+
+.nt-vegas-slide-counter {
+  display     : flex;
+  position    : absolute;
+  left       : 30px;
+  bottom      : 93px;
+  background  : var(--thm-primary);
+  padding     : 3px 10px;
+  max-width   : 60px;
+  color       : var(--electron-light);
+  align-items : center;
+  font-size   : 17px;
+  font-weight : 600;
+}
+
+.nt-vegas-slide-counter .sep {
+  margin      : 0 5px;
+  font-size   : 20px;
+  font-weight : 400;
+}
+
+.nt-vegas-slide-counter .current {
+  font-size: 17px;
+}
+
+@media
+  (min-width : 992px) {
+  .nt-vegas-slide-content {
+    padding-left : 120px;
+    padding-right  : 120px;
+  }
+}
+
+@media
+  (max-width : 991px) {
+  .nt-vegas-slide-content {
+    text-align : center;
+  }
+
+  .nt-vegas-slide-content h1 {
+    font-size : 50px;
+  }
+
+  .vegas-control .vegas-control-prev {
+    left : 25px;
+  }
+
+  .vegas-control .vegas-control-next:hover {
+    left : 15px;
+  }
+
+  .vegas-control .vegas-control-prev:hover {
+    right : 15px;
+  }
+}
+
+@media
+  (max-width : 767px) {
+  .nt-vegas-slide-content h1 {
+    font-size : 40px;
+  }
+}
+
+@media
+  (max-width : 480px) {
+  .nt-vegas-slide-content h1 {
+    font-size : 28px;
+  }
+
+  .vegas-control .vegas-control-next,
+  .vegas-control .vegas-control-prev {
+    -webkit-transform : scale(.8);
+    transform         : scale(.8);
+  }
+
+  .vegas-control .vegas-control-next {
+    left : 5px;
+  }
+
+  .vegas-control .vegas-control-next i {
+    left : 30px;
+  }
+
+  .vegas-control .vegas-control-prev {
+    right : 5px;
+  }
+
+  .vegas-control .vegas-control-next i {
+    left : 11px;
+    right  : auto;
+  }
+
+  .vegas-control .vegas-control-prev i {
+    right : 11px;
+  }
+
+  .vegas-control .vegas-control-next i:after,
+  .vegas-control .vegas-control-prev i:after {
+    width : 20px;
+  }
+
+  .vegas-control .vegas-control-next:hover {
+    left : 0px;
+  }
+
+  .vegas-control .vegas-control-prev:hover {
+    right : 0px;
+  }
+}
+
+/* vegas slider for template type */
+.vegas-template-slider {
+    position: relative;
+    display: block;
+}
+.vegas-template-slider .vegas-header-wrapper,
+.vegas-template-slider .electron-elementor-header{
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.vegas-content-wrapper .elementor-top-section {
+  visibility      : hidden;
+  position        : absolute;
+  height          : 100%;
+  width           : 100%;
+  top             : 0;
+  left           : 0;
+  right            : 0;
+  opacity         : 0;
+  overflow        : hidden;
+  background      : transparent;
+  transition      : none;
+}
+
+.vegas-content-wrapper .elementor-top-section.active {
+  visibility : visible;
+  position   : relative;
+  top        : auto;
+  left      : auto;
+  right       : auto;
+  opacity    : 1;
+}
+
+.vegas-template-slider .vegas-control .vegas-control-next,
+.vegas-template-slider .vegas-control .vegas-control-prev {
+  z-index : 99;
+}
+
+
+/* sonradan eklenenler */
+
+
+
+
+/* electron slick */
+.align-right {
+    text-align: left;
+}
+.align-left {
+    text-align: right;
+}
+.align-center {
+    text-align: center;
+}
+
+/* slide show */
+.electron-slideshow {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+}
+
+.electron-slides {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.electron-slide {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	opacity: 0;
+	pointer-events: none;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	padding:20px;
+}
+.electron-slide-img:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.electron-slide-title,
+.electron-slide-desc,
+.electron-slide-link {
+    z-index: 2;
+}
+.electron-slide-current {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.electron-slide-img {
+	position: absolute;
+	top: -200px;
+	right: -200px;
+	width: calc(100% + 400px);
+	height: calc(100% + 400px);
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.electron-slidenav {
+    position: absolute;
+    width: 300px;
+    margin-right: -150px;
+    right: 50%;
+    bottom: 0;
+    text-align: center;
+    padding: 2em;
+    z-index: 3;
+    color: var(--electron-light);
+}
+
+.electron-slidenav-item {
+    border: 0;
+    background: none;
+    font-weight: bold;
+    color: var(--electron-light);
+    display: inline-block;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.electron-slidenav-item:focus {
+	outline: none;
+}
+
+.electron-slidenav-item:hover {
+	color: var(--electron-primary);
+}
+
+.electron-slideshow .shape {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	fill: var(--electron-gray-soft);
+	top: 0;
+	pointer-events: none;
+}
+
+.electron-slide-title {
+	position: relative;
+	font-size: 12vw;
+	margin: 0;
+	cursor: default;
+	line-height: 1;
+	color: var(--electron-light);
+}
+
+.electron-slide-desc {
+	position: relative;
+	font-size: 1.5em;
+	margin: 0 0 2em 0;
+	cursor: default;
+	color: var(--electron-light);
+	padding: 0 1em;
+	text-align: center;
+}
+.electron-slide-link-wrapper {
+    display: flex;
+}
+
+.electron-slide-link-wrapper a + a {
+    margin-right: 10px;
+}
+.electron-slideshow .style-btn {
+	position: relative;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 1em 2em;
+	display: block;
+	color: var(--electron-black);
+	background: var(--electron-light);
+	transition: color 0.3s, background 0.3s;
+}
+
+.electron-slide-link:hover {
+	color: var(--electron-light);
+	background: var(--electron-black);
+}
+.electron-slide-link2 {
+	color: var(--electron-light);
+	background: var(--electron-black);
+}
+.electron-slide-link2:hover {
+	background: var(--electron-light);
+	color: var(--electron-black);
+}
+
+/* instagram widget */
+.electron-image-wrapper {
+    overflow: hidden;
+}
+.electron-instagram-link svg {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    max-width: 32px;
+    max-height: 32px;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    z-index: 1;
+}
+.electron-instagram-link:hover,
+.electron-instagram-link:hover svg {
+    opacity: 1;
+}
+.electron-instagram-link img {
+    -webkit-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+}
+.electron-instagram-link:hover img {
+    transform: scale( 1.1 );
+}
+/* instagram widget */

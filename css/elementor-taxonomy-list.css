@@ -1,0 +1,324 @@
+.layout-list .electron-taxonomy-list {
+    border: 1px solid var(--electron-border);
+    display: flex;
+    flex-direction: column;
+}
+.electron-taxonomy-list .taxonomy-item {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    min-height: 35px;
+    padding: 5px 10px;
+}
+.layout-list .taxonomy-item + .taxonomy-item {
+    border-top: 1px solid var(--electron-border);
+}
+.electron-taxonomy-list .taxonomy-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex: 1;
+}
+.electron-taxonomy-list .taxonomy-thumb {
+    border-radius: 5px;
+    background-color: var(--electron-gray-soft);
+    padding: 3px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.electron-taxonomy-list .taxonomy-thumb img {
+    border-radius: 5px;
+    max-width: 35px;
+}
+.electron-taxonomy-list .taxonomy-thumb i {
+    font-size: 36px;
+}
+.electron-taxonomy-list .taxonomy-thumb svg {
+    width: 35px;
+    height: 35px;
+    max-width: 100%;
+    max-height: 100%;
+}
+.electron-taxonomy-list .taxonomy-title {
+    flex: 1;
+}
+.electron-taxonomy-list .taxonomy-count {
+    min-width: 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--electron-blue-bg);
+    color: var(--electron-blue);
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.electron-taxonomy-list .taxonomy-details,
+.layout-slider .taxonomy-details{
+    position: absolute;
+    width: 100%;
+    max-width: 320px;
+    top: 100%;
+    right: 0px;
+    background-color: var(--electron-light);
+    border: 1px solid var(--electron-border);
+    border-radius: 5px;
+    z-index: 99;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-box-shadow: 0 15px 30px -4px rgb(0 0 0 / 9%);
+    -moz-box-shadow: 0 15px 30px -4px rgba(0,0,0,.09);
+    box-shadow: -4px -2px 30px 2px rgb(0 0 0 / 17%);
+    transform: translateY(15px) translateZ(0);
+    transition: opacity 0.4s cubic-bezier(.19,1,.22,1),visibility 0.4s cubic-bezier(.19,1,.22,1),transform 0.4s cubic-bezier(.19,1,.22,1);
+    pointer-events: none;
+}
+.layout-slider .taxonomy-details {
+    position: fixed;
+    top: 0;
+    right: 0px;
+}
+.layout-slider .taxonomy-details.active {
+    opacity: 1;
+    visibility: visible;
+}
+.taxonomy-item .taxonomy-details:before,
+.layout-slider .taxonomy-details:before{
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 13px;
+    width: 15px;
+    height: 15px;
+    transform: rotate(45deg);
+    border: 1px solid var(--electron-border);
+    background: var(--electron-light);
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.electron-taxonomy-list .taxonomy-details.position-top {
+    bottom: 100%;
+    top: auto;
+}
+.electron-taxonomy-list .taxonomy-details.position-right {
+    top: 0;
+    left: 100%;
+}
+.electron-taxonomy-list .taxonomy-details.position-left {
+    top: 0;
+    right: 100%;
+}
+.electron-taxonomy-list .taxonomy-details.position-top:before {
+    top: auto;
+    bottom: -8px;
+    right: 12px;
+    transform: rotate(-135deg);
+}
+.electron-taxonomy-list .taxonomy-details.position-left:before {
+    top: 16px;
+    right: -8px;
+    transform: rotate(135deg);
+}
+.electron-taxonomy-list .taxonomy-details.position-right:before {
+    top: 16px;
+    left: -8px;
+    transform: rotate(-45deg);
+}
+
+.taxonomy-item.active,
+.taxonomy-item:hover {
+    background-color: var(--electron-primary);
+}
+.taxonomy-item.active .taxonomy-thumb,
+.taxonomy-item:hover .taxonomy-thumb {
+    background-color: var(--electron-blue-bg);
+}
+.taxonomy-item.active .taxonomy-title,
+.taxonomy-item:hover .taxonomy-title {
+    color: var(--electron-light);
+}
+
+.taxonomy-item:hover .taxonomy-details {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: unset;
+}
+.taxonomy-item.active .taxonomy-count,
+.taxonomy-item:hover .taxonomy-count {
+    opacity: 0.8;
+}
+.taxonomy-item a:hover {
+    opacity: 1;
+}
+.style-2 .electron-taxonomy-list .taxonomy-item {
+    padding: 0;
+}
+.style-2 .electron-taxonomy-list .taxonomy-thumb {
+    border-radius: 0px;
+    height: 100%;
+    min-width: 60px;
+}
+.style-3 .electron-taxonomy-list,
+.style-4 .electron-taxonomy-list {
+    border: 0;
+    gap: 3px;
+}
+.style-3 .electron-taxonomy-list .taxonomy-item {
+    border: 1px solid var(--electron-border);
+    border-radius: 5px;
+}
+.style-3 .electron-taxonomy-list .taxonomy-count {
+    height: calc(100% - 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2px;
+    border-radius: 5px;
+}
+.style-3 .taxonomy-item:hover .taxonomy-count,
+.style-4 .taxonomy-item:hover .taxonomy-count {
+    opacity: 1;
+    background-color: var(--electron-light);
+    color: var(--electron-dark);
+}
+
+.style-4 .electron-taxonomy-list .taxonomy-item {
+    border: 1px solid var(--electron-border);
+    border-radius: 50px;
+    padding: 5px;
+}
+.style-4 .electron-taxonomy-list .taxonomy-count,
+.style-4 .electron-taxonomy-list .taxonomy-thumb {
+    border-radius: 50px;
+    min-width: 45px;
+    min-height: 45px;
+}
+.style-4 .electron-taxonomy-list .taxonomy-thumb img {
+    padding: 2px;
+}
+.style-4 .electron-taxonomy-list .taxonomy-count {
+    position: relative;
+    right: auto;
+    left: auto;
+    top: auto;
+    transform: none;
+    font-size: 11px;
+}
+.style-4 .electron-taxonomy-list .taxonomy-details.position-right:before {
+    top: 15px;
+}
+
+.layout-grid .electron-taxonomy-list {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+.layout-grid .electron-taxonomy-list .taxonomy-item,
+.layout-slider .electron-taxonomy-list .taxonomy-item {
+    border: 1px solid var(--electron-border);
+}
+.electron-nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.electron-nav-bg {
+    background-color: var(--electron-primary);
+    border-color: var(--electron-primary);
+    width: 30px;
+    height: 30px;
+}
+
+/* slider type */
+.electron-widget-taxonomy-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    --sgap: 20px;
+}
+.taxonomy-col-wrapper {
+    width: 300px;
+}
+.products-col-wrapper {
+    width: calc(100% - (300px + var(--sgap)));
+}
+
+.electron-tab-taxonomy .electron-swiper-container:not(.active),
+.electron-tab-taxonomy .electron-woocommerce-pagination:not(.active) {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.electron-tab-taxonomy.style-border-outside .electron-swiper-container {
+    border-left: 1px solid var(--electron-border);
+}
+
+.electron-tab-taxonomy.style-border-outside .electron-loop-product {
+    border-top: 1px solid var(--electron-border);
+}
+.electron-tab-taxonomy.style-border-outside .electron-loop-product:hover {
+    border: 1px solid var(--electron-primary);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    transition: none;
+    transform: none;
+}
+.electron-tab-taxonomy .slider-wrapper {
+    position: relative;
+}
+.electron-tab-taxonomy .electron-woocommerce-pagination {
+    margin-top: 30px;
+}
+.electron-tab-taxonomy .electron-swiper-prev,
+.electron-tab-taxonomy .electron-swiper-next {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--electron-light);
+    background-color: var(--electron-primary);
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+}
+.electron-tab-taxonomy .slider-wrapper:hover .electron-swiper-prev,
+.electron-tab-taxonomy .slider-wrapper:hover .electron-swiper-next {
+    opacity: 1;
+    visibility: visible;
+}
+.electron-tab-taxonomy .electron-nav-bg:hover {
+    background-color: var(--electron-primary);
+    border-color: var(--electron-primary);
+    color: var(--electron-light);
+}
+.electron-tab-taxonomy .electron-swiper-next {
+    right: 0;
+    left: auto;
+}
+
+@media(max-width:768px){
+.electron-taxonomy-list .taxonomy-details.position-right {
+    display: none;
+}
+}
+
+@media(max-width:480px){
+.taxonomy-col-wrapper {
+    width: 100%;
+}
+.products-col-wrapper {
+    width: 100%;
+}
+}

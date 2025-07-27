@@ -1,0 +1,68 @@
+/*
+* Instagram Slider Start
+/////////////////////////////////*/
+.electron-image-wrapper {
+    overflow: hidden;
+}
+
+.electron-instagram-link {
+    position: relative;
+    padding-bottom: 100%;
+    display: block;
+}
+
+.electron-instagram-link svg {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    max-width: 32px;
+    max-height: 32px;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    z-index: 1;
+}
+
+.electron-instagram-link:hover,
+.electron-instagram-link:hover svg {
+    opacity: 1;
+}
+
+.electron-instagram-link img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -webkit-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+
+.electron-instagram-link:hover img {
+    transform: scale( 1.1 );
+}
+
+.electron-instagram-link .electron-instagram-text {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    text-align: center;
+    width: 100%;
+    color: var(--electron-light);
+    transform: translateY(100%);
+    will-change: transform;
+    -webkit-transition: opacity 0.35s ease, ease;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    z-index: 1;
+}
+
+.electron-instagram-link:hover .electron-instagram-text {
+    opacity: 1;
+    transform: translateY(0%);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*
+* Instagram Slider End
+/////////////////////////////////*/

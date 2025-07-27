@@ -1,0 +1,113 @@
+/* product type 2 */
+.electron-loop-product.type-2 {
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid var(--electron-border);
+    background: var(--electron-light);
+}
+
+.type-2 .thumb-wrapper {
+    padding: 15px;
+    padding-bottom: 0px;
+}
+
+.type-2 .details-wrapper {
+    padding: 15px;
+    position: relative;
+    border-top: 1px solid var(--electron-border);
+}
+
+.type-2 .details-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.type-2 .product-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    flex-direction: column;
+    background: var(--electron-light);
+    padding: 10px 7px;
+    border: 1px solid;
+    border-color: var(--electron-border);
+    border-radius: 3px;
+    opacity: 0;
+}
+
+.type-2:hover .product-actions {
+     opacity: 1;
+}
+
+.type-2 .electron-btn {
+    width: 100%;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.type-2 .electron-swatches-wrapper {
+    margin-top: 15px;
+}
+
+.type-2 .product-footer {
+    margin-top: 10px;
+    max-width: 100%;
+    width: calc(100% - 30px);
+}
+
+.type-2 .content-hidden {
+    position: absolute;
+    background-color: var(--electron-light);
+    border: 1px solid var(--electron-border);
+    border-radius: 5px;
+    -webkit-box-shadow: 0 25px 50px -12px rgba(33,37,41,.25);
+    box-shadow: 0 25px 50px -12px rgba(33,37,41,.25);
+    pointer-events: none;
+    opacity: 0;
+    will-change: opacity;
+    -webkit-transition: opacity 0.15s cubic-bezier(.17,.62,.44,.99);
+    transition: opacity 0.15s cubic-bezier(.17,.62,.44,.99);
+    position: absolute;
+    inset: -15px -15px -15px -15px;
+    visibility: hidden;
+    transform: scale(.98);
+    margin-bottom: -106px;
+}
+
+@media screen and (min-width: 992px) {
+    .type-2 .product-footer {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        will-change: opacity;
+        -webkit-transition: all 0.15s cubic-bezier(.17,.62,.44,.99);
+        transition: all 0.15s cubic-bezier(.17,.62,.44,.99);
+    }
+    .type-2:hover .product-footer,
+    .type-2:hover .content-hidden {
+        opacity: 1;
+        visibility: visible;
+    }
+    .type-2:hover .content-hidden {
+        transform: scale(1);
+    }
+    .type-2:hover .thumb-wrapper,
+    .type-2:hover .product-labels,
+    .type-2:hover .details-wrapper {
+        z-index: 1;
+    }
+    .type-2:hover {
+        z-index: 2;
+    }
+}
+@media(max-width: 576px) {
+    .type-2 .product-footer {
+        width: 100%;
+    }
+}

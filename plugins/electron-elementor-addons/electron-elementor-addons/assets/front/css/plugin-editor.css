@@ -1,0 +1,50 @@
+.select2-container--default .select2-selection--multiple .select2-selection__rendered,
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+min-width: 100px!important;
+}
+
+
+.elementor-control-unit-2 {
+width: 70px!important;
+}
+.elementor-element.elementor-widget-empty.elementor-widget-electron-menu .elementor-widget-empty-icon{
+    display: none!important;
+}
+
+.elementor-panel #elementor-panel-category-electron .elementor-element,
+.elementor-panel #elementor-panel-category-electron-post .elementor-element,
+.elementor-panel #elementor-panel-category-electron-woo .elementor-element,
+.elementor-panel #elementor-panel-category-electron-woo-product .elementor-element {
+    background-color: #025bbf;
+}
+.elementor-panel #elementor-panel-category-electron .elementor-element .icon,
+.elementor-panel #elementor-panel-category-electron .elementor-element .title,
+.elementor-panel #elementor-panel-category-electron-post .elementor-element .icon,
+.elementor-panel #elementor-panel-category-electron-post .elementor-element .title,
+.elementor-panel #elementor-panel-category-electron-woo .elementor-element .icon,
+.elementor-panel #elementor-panel-category-electron-woo .elementor-element .title,
+.elementor-panel #elementor-panel-category-electron-woo-product .elementor-element .icon,
+.elementor-panel #elementor-panel-category-electron-woo-product .elementor-element .title{
+    color: #ffffff;
+}
+#elementor-panel-categories {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+
+.elementor-panel-category {
+  -ms-flex-order: 1;
+  order: 1;
+  -webkit-box-ordinal-group: 2; }
+
+div#elementor-panel-category-electron,
+div#elementor-panel-category-electron-woo {
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-box-ordinal-group: 1;
+}

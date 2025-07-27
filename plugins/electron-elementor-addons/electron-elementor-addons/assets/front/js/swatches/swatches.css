@@ -1,0 +1,120 @@
+.electron-empty,
+.electron-terms + select:not(.electron-select),
+.electron-term.electron-disabled:after,
+.electron-term.electron-disabled:before {
+    display: none !important;
+}
+.electron-term.electron-disabled:before {
+    pointer-events: none;
+}
+
+.electron-term.electron-disabled {
+    opacity: .4;
+    cursor: default;
+}
+
+.electron-terms {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.electron-variations {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.electron-term {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    min-width: 60px;
+    min-height: 25px;
+    border-radius: 0;
+    font-size: 12px;
+    line-height: 1;
+    height: 0;
+}
+
+.electron-term.electron-selected:before {
+    content: '✓';
+    min-height: 18px;
+    min-width: 18px;
+    border-radius: 100%;
+    background-color: var(--electron-success);
+    color: var(--electron-light);
+    text-align: center;
+    font-size: 10px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -12px;
+}
+.hide-icon .electron-term.electron-selected:before {
+    content: none;
+}
+
+.terms-outline .electron-term {
+    padding: 3px;
+    border: 1px solid var(--electron-primary);
+}
+
+.electron-type-image .electron-term {
+    height: 42px;
+    width: 42px;
+}
+
+.electron-type-image .electron-term img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.electron-type-button:not(.terms-outline) .electron-term {
+    color: var(--electron-light);
+    background: var(--electron-primary);
+}
+.terms-outline .electron-term .type-button {
+    color: var(--electron-light);
+    background: var(--electron-primary);
+}
+.terms-outline .type-button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.type-color {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.electron-product.row .electron-variations {
+    position: relative;
+}
+
+.electron-product.row .electron-variations-items .label {
+    margin-right: 10px;
+}
+
+.terms-radius .electron-term,
+.terms-radius .type-color,
+.terms-radius .type-button {
+    border-radius: 4px;
+}
+
+.electron-term.electron-selected {
+    border-color: #25d366;
+    border-width: 2px;
+    border-style: solid;
+}

@@ -1,0 +1,302 @@
+[data-bs-theme=dark] {
+    --gen-body-color: #bdbfd4;
+    --gen-body-bg: #11121c;
+    --gen-dark-blue: #171825;
+    --gen-dark: #000000;
+    --gen-yellow: #ffdc00;
+    --gen-white: #ffffff;
+    --gen-border-color: #2e2f45;
+    --gen-secondary-color: #6c757d;
+    color-scheme: dark;
+}
+
+body {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background-color: var(--gen-body-bg);
+    color: var(--gen-body-color);
+}
+input:not([type="checkbox"]):not([type="radio"])::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: var(--gen-secondary-color);
+    opacity: 1
+}
+
+input:not([type="checkbox"]):not([type="radio"])::placeholder,
+textarea::placeholder {
+    color: var(--gen-secondary-color);
+    opacity: 1
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: var(--gen-secondary-color);
+}
+.form-control,
+input[type=text],
+input[type=email],
+input[type=url],
+input[type=password],
+input[type=tel],
+input[type=search],
+input[type=number],
+textarea,
+select,
+.select2-container.select2-container--default .select2-selection--single,
+.select2-container--default .select2-search--dropdown .select2-search__field,
+.electron-ajax-product-search input.electron-ajax-search-input.hide-clear,
+.woocommerce-input-wrapper input,
+.woocommerce-input-wrapper select,
+.woocommerce-input-wrapper textarea,
+input:not([type="checkbox"]):not([type="radio"]) {
+    background-clip: padding-box;
+    background-color: var(--gen-body-bg);
+    border-color: var(--gen-border-color);
+    color: var(--gen-white);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    outline: none;
+}
+input:not([type=checkbox]):focus,
+input[type=checkbox]:checked,
+input:not([type=radio]):focus,
+input[type=radio]:checked,
+input:focus, textarea:focus,
+textarea:focus::placeholder {
+    border-color: var(--gen-yellow)!important;
+}
+h1, h2, h3, h4, h5, h6,
+a,
+.electron-widget-product-categories a label,
+.electron-product-status a label,
+.woocommerce .woocommerce-widget-layered-nav-list .woocommerce-widget-layered-nav-list__item a,
+.woocommerce ul.cart_list li a,
+.woocommerce ul.product_list_widget li a,
+.electron-category-slider .category-title,
+.nt-sidebar-inner li a span.remove-filter,
+.electron-fast-filters-list .remove-filter,
+.electron-remove-filter li a,
+.nice-select,
+.electron-btn.electron-btn-text,
+.cr-review-card .reviewer-name,
+.electron-loop-product .product-features,
+.electron-tab-menu a,
+.electron-header-middle .nt-header-phone-number,
+.bg-light .header-text, .bg-light .header-text a, .bg-light .account-page-link, .bg-light .nav >li> a, .bg-light .header-mainmenu>ul>li>a, .bg-light .header-mainmenu .submenu>li>a, .bg-light .electron-ajax-product-title, .bg-light .electron-btn-text, .bg-light .electron-ajax-product-price, .bg-light .header-shortcode a, .bg-light .electron-category-menu .submenu a, .bg-light .electron-category-menu li, .bg-light .type-dropdown ul.submenu a, .bg-trans-dark .header-text, .bg-trans-dark .header-text a, .bg-trans-dark .account-page-link, .bg-trans-dark .nav >li> a, .bg-trans-dark .header-mainmenu>ul>li>a, .bg-trans-dark .header-shortcode a, .bg-trans-dark .electron-ajax-selected, .bg-trans-dark .header-mainmenu .submenu>li>a, .bg-trans-dark .electron-ajax-product-title, .bg-trans-dark .electron-btn-text, .bg-trans-dark .electron-ajax-product-price, .bg-trans-dark .electron-category-menu .submenu a, .bg-trans-dark .electron-category-menu li, .bg-trans-dark .type-dropdown ul.submenu a,
+.header-mainmenu .dropdown-btn,
+.electron-ajax-selected,
+.electron-breadcrumb li, .electron-breadcrumb li a,
+.electron-small-title,
+.electron-small-title a,
+.electron-cart-totals .electron-cart-total,
+.woocommerce form .form-row label,
+.product-review-form label,
+.electron-customer-billing-details .woocommerce-billing-fields .form-row label,
+.electron-checkout-review-order-table .electron-checkout-footer-item strong,
+ul.wc_payment_methods.payment_methods.methods,
+.cart-item-title .cart-name,
+.electron-content-info .product-name,
+.cart-item-title .electron-price .cart-quantity,
+.nt-electron-content table.table.table-striped tbody th,
+.nt-electron-content table.table.table-striped thead th,
+.nt-electron-content table.table.table-striped tfoot th,
+.electron-summary-item.electron-product-meta .electron-meta-label,
+.electron-ajax-search-results,
+.mobile-menu li>.submenu>li>a,
+.mobile-category-menu li>.submenu>li>a {
+    color: var(--gen-body-color);
+}
+span.subDropdown svg,
+.electron-toggle-hidden-sidebar,
+.electron-open-fixed-sidebar,
+.electron-filter-column-select ul li svg,
+.electron-shop-filter-area ul li a,
+.electron-shop-filter-area li a svg,
+.bg-light .electron-svg-icon,
+.electron-woocommerce-cart-form .remove svg,
+.electron-svg-icon {
+    fill: var(--gen-body-color);
+    color: var(--gen-body-color);
+}
+.electron-header .panel-open .menuBars {
+    stroke: var(--gen-body-color);
+}
+.electron-page-hero,
+.electron-category-slider .electron-category-slide-item a,
+.has-sidebar .nt-sidebar-inner,
+.woocommerce ul.cart_list li img,
+.woocommerce ul.product_list_widget li img,
+.electron-fast-filters-list li a,
+.electron-has-submenu.inactive >a,
+.electron-fast-filters-submenu,
+.nice-select .list,
+.cr-review-card-inner,
+.electron-loop-product.type-1,
+.fast-filters a,
+.style-4 .electron-taxonomy-list .taxonomy-item,
+.electron-ajax-product-search form,
+.mini-panel,
+.header-mainmenu .nav>li>.submenu,
+.header-mainmenu .nav>li>.submenu .submenu,
+.type-dropdown ul.submenu,
+.electron-category-menu .submenu,
+.category-select-wrapper .category-list,
+.electron-cart-totals,
+.electron-woocommerce-cart-form .electron-quantity-small .quantity,
+.electron-order-review,
+.style-2 .electron-category-item .electron-category-thumb,
+.nt-electron-content table.table.table-striped,
+.nt-electron-content table.table.table-striped th,
+.nt-electron-content table.table.table-striped td,
+.electron-quickview-sidebar,
+.electron-ajax-search-results,
+.select2-dropdown,
+.mini-panel .coupons-wrapper,
+.mini-panel .shipping-calculator,
+.electron-mobile-menu
+{
+    background-color: var(--gen-dark-blue);
+    border-color: var(--gen-border-color);
+}
+
+.electron-order-review {
+    box-shadow: 0 -1px 1px var(--gen-border-color), 0 -10px 0 -5px var(--gen-dark-blue), 0 -10px 1px -4px var(--gen-border-color), 0 -20px 0 -10px var(--gen-dark-blue), 0 -20px 1px -9px var(--gen-border-color);
+}
+.has-sidebar .nt-sidebar-inner-widget + .nt-sidebar-inner-widget:before {
+    background-color: var(--gen-border-color);
+}
+.mini-panel:before {
+    border-bottom-color: var(--gen-dark-blue);
+}
+.nice-select:after{
+    border-color: var(--gen-body-color);
+}
+
+#nt-sidebar form input,
+input[type=checkbox],
+input[type=radio],
+.site-scroll li a .checkbox {
+    background-color: var(--gen-body-bg);
+    border: 1px solid var(--gen-border-color);
+    outline: none;
+    clear: none;
+    cursor: pointer;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: none;
+    transition: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-clip: padding-box;
+}
+.electron-taxonomy-list .taxonomy-details,
+.layout-slider .taxonomy-details,
+.taxonomy-item .taxonomy-details:before,
+.layout-slider .taxonomy-details:before,
+ul.wc_payment_methods.payment_methods.methods,
+input[type='checkbox']:after,
+.action,
+.quick-main,
+.electron-quickview-sidebar .quick-thumbs img,
+.electron-quickview-sidebar .quick-thumbs img:hover,
+.page-overlay,
+.quantity,
+ul.coupons>li>div,
+.mobile-menu li>a,
+.mobile-category-menu li>a,
+.mobile-menu span.dropdown-btn,
+.mobile-category-menu span.dropdown-btn {
+    background-color: var(--gen-body-bg);
+    border-color: var(--gen-border-color);
+}
+ul.coupons>li>div:hover{
+    background-color: var(--gen-dark);
+    border-color: var(--gen-border-color);
+}
+.mobile-menu-tab {
+    background-color: var(--gen-dark);
+    color: var(--electron-white);
+    border-color: var(--gen-border-color);
+}
+.mobile-menu li.open>a,
+.mobile-menu li>a:hover,
+.mobile-category-menu li.open>a,
+.mobile-category-menu li>a:hover {
+    background-color: var(--gen-dark);
+    color: var(--electron-white);
+    opacity: 1;
+}
+.mobile-menu-tab:hover,
+.mobile-menu-tab.active {
+    background-color: var(--gen-dark-blue);
+    border-color: var(--electron-dark);
+}
+input[type=checkbox],
+input[type=radio],
+.site-scroll li a .checkbox {
+    width: 14px;
+    height: 14px;
+}
+.electron-fast-filters-submenu > li a,
+.bg-light:not(.bg-trans-light) {
+    background-color: var(--gen-body-bg);
+}
+.nt-sidebar-inner a span.remove-filter,
+ul.electron-remove-filter li a span.remove-filter,
+.electron-fast-filters-list .remove-filter,
+ul.electron-remove-filter li a.clear-all span.remove-filter {
+    background-color: var(--gen-body-color);
+}
+.nt-sidebar-inner li a span.remove-filter:before,
+.nt-sidebar-inner li a span.remove-filter:after,
+.electron-fast-filters-list .remove-filter:before,
+.electron-fast-filters-list .remove-filter:after,
+.electron-remove-filter li a span.remove-filter:before,
+.electron-remove-filter li a span.remove-filter:after,
+ul.electron-remove-filter li a.clear-all span.remove-filter:before,
+ul.electron-remove-filter li a.clear-all span.remove-filter:after {
+    background-color: var(--gen-body-bg);
+}
+.cr-review-card .review-product,
+.type-1 .details-wrapper,
+.electron-ajax-product-search .category-select-wrapper,
+.electron-category-menu .primary-cats>li:not(last-child),
+.electron-category-menu .submenu>li:not(last-child),
+.electron-header-bottom,
+.electron-header-top,
+.electron-woocommerce-cart-form .electron-cart-item,
+.electron-checkout-review-order-table .electron-checkout-review-order-footer,
+.electron-checkout-footer-item.order-total,
+.electron-checkout-review-order-table .electron-cart-item,
+.mini-panel .panel-title,
+.mini-panel .header-cart-footer,
+.mini-panel .cart-total,
+.nt-electron-content table.table.table-striped th,
+.nt-electron-content table.table.table-striped td,
+.electron-product-info,
+.woobt-products,
+.woobt-products .woobt-product,
+.electron-ajax-search-results ul li,
+.mobile-menu .nav.cloned,
+.mobile-menu .menu-divider {
+    border-color: var(--gen-border-color);
+}
+.cr-review-card .datetime,
+.electron-header-middle .nt-header-phone-text {
+    color: var(--gen-yellow);
+}
+ul.wc_payment_methods.payment_methods.methods {
+    border-color: var(--gen-yellow);
+}
+input[type='checkbox']:checked:after,
+.select2-container--default .select2-results__option[aria-selected=true],
+.select2-container--default .select2-results__option[data-selected=true],
+.select2-container.select2-container--default .select2-results__option--highlighted[aria-selected],
+.select2-container.select2-container--default .select2-results__option--highlighted[data-selected] {
+    background-color: var(--gen-yellow);
+    color: var(--gen-dark);
+}
+ul.coupons>li>div.applied {
+    background-color: var(--gen-yellow);
+    color: var(--gen-dark);
+}

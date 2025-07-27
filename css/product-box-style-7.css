@@ -1,0 +1,190 @@
+/* product type 7 */
+
+.ribbon {
+  position: absolute;
+  left: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; left: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #79A70A;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #79A70A;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #79A70A;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #79A70A;
+}
+
+.ribbon.badge-def span {
+  background: #ED4B4B;
+  background: linear-gradient(#ED4B4B 0%, #b72121 100%);
+}
+
+.ribbon.badge-def span::before {
+  border-left: 3px solid #ED4B4B;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #ED4B4B;
+}
+
+.ribbon.badge-def span::after {
+  border-left: 3px solid transparent;
+  border-right: 3px solid #ED4B4B;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #ED4B4B;
+}
+
+.ribbon.badge-NEW span {
+  background: #1E96FC;
+  background: linear-gradient(#1E96FC 0%, #1977c6 100%);
+}
+
+.ribbon.badge-NEW span::before {
+  border-left: 3px solid #1E96FC;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #1E96FC;
+}
+
+.ribbon.badge-NEW span::after {
+  border-left: 3px solid transparent;
+  border-right: 3px solid #1E96FC;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #1E96FC;
+}
+
+
+
+.electron-loop-product.type-7 {
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid var(--electron-border);
+    background: var(--electron-light);
+    display: grid;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100%;
+    min-height: 100%;
+    align-items: stretch;
+    justify-items: stretch;
+}
+
+.type-7 .thumb-wrapper {
+    padding: 15px;
+    padding-bottom: 0px;
+    border-bottom: 1px solid var(--electron-border);
+}
+
+.type-7 .details-wrapper {
+    padding: 15px;
+    position: relative;
+    display: grid;
+    align-items: start;
+    align-content: space-between;
+}
+.type-7 .has-swtaches .details-wrapper {
+
+    min-height: 200px;
+}
+
+.type-7 .details-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.type-7 .product-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    flex-direction: column;
+    background: var(--electron-light);
+    padding: 10px 7px;
+    border: 1px solid;
+    border-color: var(--electron-border);
+    border-radius: 3px;
+    opacity: 0;
+    -webkit-transition: all 100ms ease;
+    -moz-transition: all 100ms ease;
+    -o-transition: all 100ms ease;
+    transition: all 200ms ease;
+}
+
+.type-7 .product-actions svg {
+    fill: var(--electron-text);
+}
+
+.type-7:hover .product-actions {
+     opacity: 1;
+     right: 10px;
+}
+
+.type-7 .electron-btn {
+    width: 100%;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.type-7 .electron-swatches-wrapper {
+    margin-top: 0;
+}
+
+.electron-swatches-wrapper .electron-variations {
+    gap: 5px;
+}
+
+.type-7 .reset_variations,
+.type-7 .variation-label {
+    display: none;
+}
+.type-7 .product-footer {
+    margin-top: 0;
+    max-width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+    .type-7 .product-footer {
+        -webkit-transition: all 0.15s cubic-bezier(.17,.62,.44,.99);
+        transition: all 0.15s cubic-bezier(.17,.62,.44,.99);
+    }
+    .type-7:hover .product-footer,
+    .type-7:hover .content-hidden {
+        opacity: 1;
+        visibility: visible;
+    }
+}

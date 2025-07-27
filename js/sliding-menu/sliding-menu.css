@@ -1,0 +1,121 @@
+/*! =========================================================
+ * Sliding Menu v0.3.0
+ * http://github.danielcardoso.net/sliding-menu/
+ * ==========================================================
+ * Copyright (c) 2014-2019 DanielCardoso.net.
+ * Licensed under MIT.
+ * ======================================================== */
+ .sliding-menu {
+     position: relative;
+     overflow: hidden;
+     background-color: rgba(255, 255, 255, 0.5);
+     text-align: left;
+     font-size: 18px;
+ }
+
+.sliding-menu__panel {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.sliding-menu li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sliding-menu li a,
+.sliding-menu li .sliding-menu__nav {
+    display: block;
+    position: relative;
+    padding: 10px 0;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 400;
+    color: var(--electron-gray-dark);
+    text-decoration: none;
+    border-width: 0;
+    width: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    -webkit-transition: color 250ms ease, background-color 250ms ease;
+    -moz-transition: color 250ms ease, background-color 250ms ease;
+    -o-transition: color 250ms ease, background-color 250ms ease;
+    transition: color 250ms ease, background-color 250ms ease;
+}
+
+.sliding-menu li a:hover,
+.sliding-menu li .sliding-menu__nav:hover {
+    background: none;
+}
+.sliding-menu li.current-menu-parent>.sliding-menu__nav,
+.sliding-menu li.current-menu-item>.sliding-menu__nav,
+.sliding-menu li.current-menu-item>a,
+.sliding-menu li a:hover,
+.sliding-menu li.active a,
+.sliding-menu li .sliding-menu__nav:hover {
+    color: var(--electron-black);
+}
+
+.sliding-menu .sliding-menu__nav:before {
+    content: '\f105';
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: var(--electron-gray-dark);
+    font-size: 14px;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 10px;
+    right: -5px;
+    font-weight: 900;
+}
+.sliding-menu li .sliding-menu__nav.sliding-menu__back {
+    position: relative;
+    margin-bottom: 10px;
+    color: var(--electron-black);
+    font-weight: 500;
+}
+.sliding-menu .sliding-menu__back:after {
+    content: "";
+    border-bottom: 1px solid var(--electron-black);
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    opacity: 0.1;
+}
+.sliding-menu .sliding-menu__back:before {
+    content: '\f104';
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: var(--electron-gray-dark);
+    font-size: 14px;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 10px;
+    right: -5px;
+    font-weight: 900;
+}
+
+.sliding-menu .sliding-menu__icon {
+    margin-right: .4em;
+}
+
+.sliding-menu .sliding-menu__separator {
+    margin: .4em 1em;
+    border-top: 2px solid #555;
+}
+li.sliding-menu-inner {
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+}

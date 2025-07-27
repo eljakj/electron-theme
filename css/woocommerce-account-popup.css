@@ -1,0 +1,231 @@
+.electron-popup-account {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+}
+.electron-popup-account.popup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.electron-popup-account.active {
+    opacity: 1;
+    visibility: visible;
+}
+.electron-popup-account.popup {
+    top: 0;
+    left: 0;
+}
+
+.electron-popup-account.left-sidebar.active {
+    transition: opacity 0.4s cubic-bezier(.19,1,.22,1),visibility 0.4s cubic-bezier(.19,1,.22,1),left 0.4s cubic-bezier(.19,1,.22,1);
+}
+.electron-popup-account.right-sidebar.active {
+    transition: opacity 0.4s cubic-bezier(.19,1,.22,1),visibility 0.4s cubic-bezier(.19,1,.22,1),right 0.4s cubic-bezier(.19,1,.22,1);
+}
+.electron-popup-account.popup .account-popup-inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 400px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-200px);
+}
+
+.electron-popup-account.active .account-popup-inner {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity 0.4s cubic-bezier(.19,1,.22,1),visibility 0.4s cubic-bezier(.19,1,.22,1),transform 0.4s cubic-bezier(.19,1,.22,1);
+}
+
+.electron-popup-account .panel-close {
+    top: -10px;
+    right: -10px;
+}
+.electron-popup-account .account-area {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+    overflow: hidden;
+}
+.electron-popup-account.popup .account-area {
+    background: var(--electron-light);
+    padding: 30px;
+    box-shadow: 0 0 16px 2px #33333330;
+    border: 1px solid var(--electron-border);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.electron-popup-account.left-sidebar,
+.electron-popup-account.right-sidebar {
+    height: 100vh;
+    max-width: 400px;
+    top: 0;
+    background: var(--electron-light);
+    padding: 30px;
+    box-shadow: 0 0 16px 2px #33333330;
+    border: 1px solid var(--electron-border);
+    overflow-y: auto;
+}
+.logged-in .electron-popup-account.left-sidebar,
+.logged-in .electron-popup-account.right-sidebar {
+    max-width: 320px;
+}
+
+.electron-popup-account.left-sidebar {
+    left: -100%;
+}
+.electron-popup-account.left-sidebar.active {
+    left: 0;
+}
+.electron-popup-account.right-sidebar {
+    right: -100%;
+}
+.electron-popup-account.right-sidebar.active {
+    right: 0;
+}
+.admin-bar .electron-popup-account.left-sidebar,
+.admin-bar .electron-popup-account.right-sidebar {
+    top: 32px;
+}
+.electron-popup-account.left-sidebar .account-popup-inner,
+.electron-popup-account.right-sidebar .account-popup-inner {
+    height: 100%;
+}
+.electron-popup-account.left-sidebar .account-area,
+.electron-popup-account.right-sidebar .account-area {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.logged-in .electron-popup-account.left-sidebar .account-area,
+.logged-in .electron-popup-account.right-sidebar .account-area {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.electron-popup-account ul.navigation .electron-btn {
+    min-width: 100%;
+    text-align: center;
+}
+.electron-popup-account.left-sidebar .panel-close {
+    top: 10px;
+    left: 10px;
+    right: auto;
+}
+.electron-popup-account.right-sidebar .panel-close {
+    top: 10px;
+    right: 10px;
+    left: auto;
+}
+.electron-popup-account.popup .panel-title,
+.electron-popup-account.left-sidebar .panel-title,
+.electron-popup-account.right-sidebar .panel-title {
+    font-size: 18px;
+    text-align: center;
+}
+
+.electron-popup-account.popup .account-area {
+    gap: 20px;
+}
+.electron-popup-account ul.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.electron-popup-account.multi-forms .account-area>.row {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 0;
+    transition: transform 0.5s ease;
+}
+.electron-popup-account .account-area>.row>.col-lg-4 {
+    width: 100%;
+    padding: 0;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+.electron-popup-account .account-area>.row>.col-lg-4:not(.active) {
+    opacity: 0;
+}
+.electron-popup-account.multi-forms .account-steps {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.electron-popup-account.multi-forms .form-heading {
+    height: 30px;
+    font-size: 14px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border: 1px solid var(--electron-border);
+    cursor: pointer;
+    line-height: 1;
+}
+.electron-popup-account.multi-forms .form-heading.active {
+    background-color: var(--electron-primary);
+    color: var(--electron-light);
+}
+.electron-popup-account.multi-forms .login-title {
+    left: 30px;
+}
+.electron-popup-account.multi-forms .register-title {
+    right: 30px;
+}
+.electron-popup-account .woocommerce-form-login__submit {
+    margin-bottom: 0;
+}
+.ajax-login-active .woocommerce-form-login__submit.loading:after,
+.ajax-login-active .woocommerce-form-register__submit.loading:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -9px;
+    margin-left: -9px;
+    transition: opacity .2s ease;
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--electron-light);
+    border-left-color: var(--electron-primary);
+    border-radius: 50%;
+    vertical-align: middle;
+    animation: electron-rotate 450ms infinite linear;
+}
+.ajax-login-active .woocommerce-button.loading span {
+    opacity: 0;
+}
+.ajax-login-active .electron-before-login-form {
+    display: none;
+}
+.electron-popup-account .electron-ajax-login>p:last-child,
+.electron-popup-account .woocommerce-privacy-policy-text>p:last-child {
+    margin: 0;
+}
+.electron-popup-account p.woocommerce-form-row.form-rowp:last-child {
+    margin-bottom: 0;
+}
+@media(max-width:480px){
+    .electron-popup-account .account-area {
+        max-width: 360px;
+    }
+    .electron-popup-account .panel-close {
+        top: -15px;
+        right: 5px;
+    }
+    .electron-popup-account.popup {
+        padding: 0;
+    }
+}

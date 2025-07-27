@@ -1,0 +1,82 @@
+/*
+* Testimonial Slider Start
+/////////////////////////////////*/
+.electron-testimonials .slick-list {
+	padding: 0 !important;
+}
+
+.electron-testimonials .electron-testimonial-content p {
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+.electron-testimonials .electron-testimonial-info .name {
+	margin: 0;
+}
+
+.electron-testimonials .electron-testimonial-info img {
+	border-radius: 100%;
+	display: inline-block;
+}
+
+.electron-testimonial-1 .electron-testimonial-content {
+	margin-top: 40px;
+}
+
+.electron-testimonial-1 {
+	text-align: center;
+}
+
+.electron-testimonial-1.align-right {
+	text-align: right;
+}
+
+.electron-testimonial-1.align-left {
+	text-align: left;
+}
+
+.electron-testimonial-1 .electron-testimonial-info img {
+	margin-bottom: 20px;
+}
+
+.electron-testimonial-2 .electron-testimonial-avatar,
+.electron-testimonial-3 .electron-testimonial-avatar {
+	margin-right: 30px;
+}
+
+.electron-testimonial-2 .electron-testimonial-content {
+	margin-bottom: 40px;
+}
+
+.electron-testimonial-2 .electron-testimonial-info,
+.electron-testimonial-3 .electron-testimonial-info {
+	text-align: left;
+	width: 100%;
+	justify-content: center;
+}
+
+.electron-testimonial-2.align-right .electron-testimonial-info.electron-flex,
+.electron-testimonial-3.align-right .electron-testimonial-info.electron-flex {
+	flex-direction: row-reverse;
+	justify-content: flex-start;
+	text-align: right;
+}
+
+.electron-testimonial-2.align-left .electron-testimonial-info.electron-flex,
+.electron-testimonial-3.align-left .electron-testimonial-info.electron-flex {
+	justify-content: flex-start;
+}
+
+.electron-testimonial-2.align-right .electron-testimonial-info.electron-flex .electron-testimonial-avatar,
+.electron-testimonial-3.align-right .electron-testimonial-info.electron-flex .electron-testimonial-avatar {
+	margin-right: 0;
+	margin-left: 30px;
+}
+
+.electron-testimonial-3 .electron-testimonial-content {
+	margin-top: 40px;
+}
+
+/*
+* Testimonial Slider End
+/////////////////////////////////*/

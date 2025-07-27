@@ -1,0 +1,448 @@
+/*
+* Custom CSS
+*
+*/
+
+.elementor-editor-active .electron-main-sidebar-header,
+.elementor-editor-active .electron-main-sidebar-header.electron-active {
+	display: none;
+}
+
+.has-header-sidebar.elementor-editor-active .site-content {
+    width: 100%;
+    margin-left: 0px;
+}
+
+.elementor-add-section-area-button.elementor-add-electron-button {
+    margin-left: 5px;
+    background-image: url(../img/ninetheme.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+}
+
+i.electron.electron-addons.electron-library-open-icon {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 16px;
+    width: 16px;
+    position: relative;
+}
+
+/* ELEMENTOR CUSTOM COLUMN STRUCTURE */
+
+
+.elementor-column {
+    min-height: 0px;
+}
+
+.elementor-widget:not(:last-child) {
+    margin-bottom: 0px;
+}
+
+
+
+.mt-100vh{
+    margin-top: 100vh;
+}
+
+.electron-btn.is-block {
+    width: 100%;
+}
+
+
+/* Reveal block */
+.electron-image-reveal .elementor-image {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.reveal-holder {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.reveal-holder .reveal-block {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 101%;
+  background: white;
+  z-index: 9;
+}
+.reveal-holder .reveal-block::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: lightgray;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
+.reveal-block.gradient::before {
+  background: -webkit-gradient(linear, right top, left top, from(#eebf56), to(#f46ca3));
+  background: linear-gradient(to left, #eebf56, #f46ca3);
+}
+
+.reveal-block.gradient-two::before {
+  background: -webkit-gradient(linear, right top, left top, from(#1b9edf), to(#af74c3));
+  background: linear-gradient(to left, #1b9edf, #af74c3);
+}
+
+.reveal-block.extra {
+  background: #1b9edf;
+}
+.reveal-block.extra::before {
+  background: #af74c3;
+}
+
+.reveal-block.top.aos-animate::before,
+.reveal-block.bottom.aos-animate::before {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
+.reveal-block.left.aos-animate::before,
+.reveal-block.right.aos-animate::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.reveal-block.top::before {
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: 0% 100%;
+          transform-origin: 0% 100%;
+}
+
+.reveal-block.left::before {
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: 100% 0%;
+          transform-origin: 100% 0%;
+}
+
+.reveal-block.right::before {
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: 0% 100%;
+          transform-origin: 0% 100%;
+}
+
+.reveal-block.bottom::before {
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: 100% 0%;
+          transform-origin: 100% 0%;
+}
+
+
+/* ====================== [ 10 Vegas Slider ] ====================== */
+
+/* vegas slider */
+.elementor-widget-electron-vegas-slider.elementor-invisible{
+    visibility: visible;
+}
+.home-slider-vegas-wrapper {
+  position : relative;
+  width    : 100%;
+  height   : 100vh;
+  overflow : hidden;
+}
+
+.nt-home-slider-vegas {
+  position : absolute;
+  top      : 0;
+  left     : 0;
+  width    : 100%;
+  height   : 100%!important;
+}
+
+.nt-vegas-slide-content {
+  display         : flex;
+  visibility      : hidden;
+  position        : absolute;
+  top             : 0;
+  right           : 0;
+  left            : 0;
+  height          : 100%;
+  padding         : 150px 0;
+  color           : var(--electron-light);
+  opacity         : 0;
+  text-align      : left;
+  align-items     : center;
+  justify-content : center;
+}
+
+.nt-vegas-slide-content.text-right {
+  text-align : right;
+}
+
+.nt-vegas-slide-content.text-center {
+  text-align : center;
+}
+
+.nt-vegas-slide-content.active {
+  visibility : visible;
+  position   : relative;
+  top        : auto;
+  right      : auto;
+  left       : auto;
+  opacity    : 1;
+}
+
+.nt-vegas-slide-content h1 {
+  visibility         : hidden;
+  color              : var(--electron-light);
+  opacity            : 0;
+  font-size          : 80px;
+  font-weight        : 700;
+  letter-spacing     : 2px;
+  -webkit-transition : opacity .5s,
+                       visibility .5s;
+  transition         : opacity .5s,
+                       visibility .5s;
+}
+
+.nt-vegas-slide-content.active .btn,
+.nt-vegas-slide-content.active h1 {
+  visibility : visible;
+  opacity    : 1;
+}
+
+.nt-vegas-overlay {
+  position : absolute;
+  top      : 0;
+  left     : 0;
+  width    : 100%;
+  height   : 100%;
+}
+
+.vegas-control .vegas-control-next,
+.vegas-control .vegas-control-prev {
+  display            : flex;
+  position           : absolute;
+  right              : 30px;
+  bottom             : auto;
+  bottom             : 30px;
+  left               : auto;
+  width              : 60px;
+  height             : 60px;
+  color              : var(--electron-light);
+  border             : 1px solid rgba(255, 255, 255, 0.5);
+  border-radius      : 0;
+  align-items        : center;
+  font-size          : 14px;
+  justify-content    : center;
+  -webkit-transition : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+  transition         : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+  cursor             : pointer;
+}
+
+.vegas-control .vegas-control-next:after,
+.vegas-control .vegas-control-prev:after {
+  display : none;
+}
+
+.vegas-control .vegas-control-next:hover,
+.vegas-control .vegas-control-prev:hover {
+  background : rgba(255, 255, 255, 0.1);
+}
+
+.vegas-control .vegas-control-btn i {
+  z-index            : 1;
+  -webkit-transition : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+  transition         : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+}
+
+.vegas-control .vegas-control-btn:before {
+  z-index            : 0;
+  content            : '';
+  position           : absolute;
+  top                : 0;
+  left               : 0;
+  width              : 45px;
+  width              : 0;
+  height             : 2px;
+  height             : 100%;
+  background         : var(--thm-primary);
+  -webkit-transition : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+  transition         : all 0.7s cubic-bezier(1, 0, 0.25, 1);
+}
+
+.vegas-control .vegas-control-prev {
+  right: 30px;
+  bottom: 130px;
+}
+
+.vegas-control .vegas-control-next:hover:before,
+.vegas-control .vegas-control-prev:hover:before {
+  width : 100%;
+}
+
+.vegas-control .vegas-control-btn:hover i {
+  color : #000;
+}
+
+.nt-vegas-slide-counter {
+  display     : flex;
+  position    : absolute;
+  right       : 30px;
+  bottom      : 93px;
+  background  : var(--thm-primary);
+  padding     : 3px 10px;
+  max-width   : 60px;
+  color       : var(--electron-light);
+  align-items : center;
+  font-size   : 17px;
+  font-weight : 600;
+}
+
+.nt-vegas-slide-counter .sep {
+  margin      : 0 5px;
+  font-size   : 20px;
+  font-weight : 400;
+}
+
+.nt-vegas-slide-counter .current {
+  font-size: 17px;
+}
+
+@media
+  (min-width : 992px) {
+  .nt-vegas-slide-content {
+    padding-right : 120px;
+    padding-left  : 120px;
+  }
+}
+
+@media
+  (max-width : 991px) {
+  .nt-vegas-slide-content {
+    text-align : center;
+  }
+
+  .nt-vegas-slide-content h1 {
+    font-size : 50px;
+  }
+
+  .vegas-control .vegas-control-prev {
+    right : 25px;
+  }
+
+  .vegas-control .vegas-control-next:hover {
+    right : 15px;
+  }
+
+  .vegas-control .vegas-control-prev:hover {
+    left : 15px;
+  }
+}
+
+@media
+  (max-width : 767px) {
+  .nt-vegas-slide-content h1 {
+    font-size : 40px;
+  }
+}
+
+@media
+  (max-width : 480px) {
+  .nt-vegas-slide-content h1 {
+    font-size : 28px;
+  }
+
+  .vegas-control .vegas-control-next,
+  .vegas-control .vegas-control-prev {
+    -webkit-transform : scale(.8);
+    transform         : scale(.8);
+  }
+
+  .vegas-control .vegas-control-next {
+    right : 5px;
+  }
+
+  .vegas-control .vegas-control-next i {
+    right : 30px;
+  }
+
+  .vegas-control .vegas-control-prev {
+    left : 5px;
+  }
+
+  .vegas-control .vegas-control-next i {
+    right : 11px;
+    left  : auto;
+  }
+
+  .vegas-control .vegas-control-prev i {
+    left : 11px;
+  }
+
+  .vegas-control .vegas-control-next i:after,
+  .vegas-control .vegas-control-prev i:after {
+    width : 20px;
+  }
+
+  .vegas-control .vegas-control-next:hover {
+    right : 0px;
+  }
+
+  .vegas-control .vegas-control-prev:hover {
+    left : 0px;
+  }
+}
+
+/* vegas slider for template type */
+.vegas-template-slider {
+    position: relative;
+    display: block;
+}
+.vegas-template-slider .vegas-header-wrapper,
+.vegas-template-slider .electron-elementor-header{
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.vegas-content-wrapper .elementor-top-section {
+  visibility      : hidden;
+  position        : absolute;
+  height          : 100%;
+  width           : 100%;
+  top             : 0;
+  right           : 0;
+  left            : 0;
+  opacity         : 0;
+  overflow        : hidden;
+  background      : transparent;
+  transition      : none;
+}
+
+.vegas-content-wrapper .elementor-top-section.active {
+  visibility : visible;
+  position   : relative;
+  top        : auto;
+  right      : auto;
+  left       : auto;
+  opacity    : 1;
+}
+
+.vegas-template-slider .vegas-control .vegas-control-next,
+.vegas-template-slider .vegas-control .vegas-control-prev {
+  z-index : 99;
+}
+

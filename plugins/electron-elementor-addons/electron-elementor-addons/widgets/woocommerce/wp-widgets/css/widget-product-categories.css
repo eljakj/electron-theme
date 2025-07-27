@@ -1,0 +1,23 @@
+span.subDropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+span.subDropdown svg {
+    max-width: 10px;
+    max-height: 15px;
+}
+span.subDropdown.minus svg .vertical,
+.widget_electron_product_categories ul.children {
+    display: none;
+}
+.widget_electron_product_categories ul.children li a:before {
+    content: none!important;
+}

@@ -1,0 +1,4559 @@
+/*!
+  * Cube Portfolio - Responsive jQuery Grid Plugin
+  *
+  * version: 3.4.3 (6 January, 2016)
+  * require: jQuery v1.7+
+  *
+  * Copyright 2013-2015, Mihai Buricea (http://scriptpie.com/cubeportfolio/live-preview/)
+  * Licensed under CodeCanyon License (http://codecanyon.net/licenses)
+  *
+ */
+
+.cbp,
+.cbp-l-filters-alignCenter,
+.cbp-l-filters-alignCenter *,
+.cbp-l-filters-alignCenter .cbp-filter-counter:after,
+.cbp-l-filters-alignLeft,
+.cbp-l-filters-alignLeft *,
+.cbp-l-filters-alignRight,
+.cbp-l-filters-alignRight *,
+.cbp-l-filters-alignRight .cbp-filter-counter:after,
+.cbp-l-filters-big,
+.cbp-l-filters-big *,
+.cbp-l-filters-button,
+.cbp-l-filters-button *,
+.cbp-l-filters-button .cbp-filter-counter:after,
+.cbp-l-filters-buttonCenter,
+.cbp-l-filters-buttonCenter *,
+.cbp-l-filters-buttonCenter .cbp-filter-counter:after,
+.cbp-l-filters-dropdown,
+.cbp-l-filters-dropdown *,
+.cbp-l-filters-dropdownHeader:after,
+.cbp-l-filters-list,
+.cbp-l-filters-list *,
+.cbp-l-filters-text,
+.cbp-l-filters-text *,
+.cbp-l-filters-text .cbp-filter-counter:after,
+.cbp-l-filters-underline,
+.cbp-l-filters-underline *,
+.cbp-l-filters-work,
+.cbp-l-filters-work *,
+.cbp-l-loadMore-bgbutton,
+.cbp-l-loadMore-bgbutton *,
+.cbp-l-loadMore-button,
+.cbp-l-loadMore-button *,
+.cbp-l-loadMore-text,
+.cbp-l-loadMore-text *,
+.cbp-popup-loadingBox:after,
+.cbp-popup-wrap,
+.cbp-popup-wrap:before,
+.cbp-popup-wrap *,
+.cbp-search,
+.cbp-search-icon:after,
+.cbp-search *,
+.cbp:after,
+.cbp *,
+.cbp *:after {
+  -moz-box-sizing    : border-box;
+  -webkit-box-sizing : border-box;
+  box-sizing         : border-box;
+}
+
+.cbp-l-grid-agency-desc,
+.cbp-l-grid-agency-title,
+.cbp-l-grid-blog-title,
+.cbp-l-grid-masonry-projects-desc,
+.cbp-l-grid-masonry-projects-title,
+.cbp-l-grid-projects-desc,
+.cbp-l-grid-projects-title,
+.cbp-l-grid-work-desc,
+.cbp-l-grid-work-title {
+  overflow      : hidden;
+  text-overflow : ellipsis;
+  white-space   : nowrap;
+}
+
+.cbp-l-filters-alignCenter,
+.cbp-l-filters-alignCenter *,
+.cbp-l-filters-alignLeft,
+.cbp-l-filters-alignLeft *,
+.cbp-l-filters-alignRight,
+.cbp-l-filters-alignRight *,
+.cbp-l-filters-big,
+.cbp-l-filters-big *,
+.cbp-l-filters-button,
+.cbp-l-filters-button *,
+.cbp-l-filters-buttonCenter,
+.cbp-l-filters-buttonCenter *,
+.cbp-l-filters-dropdown,
+.cbp-l-filters-dropdown *,
+.cbp-l-filters-list,
+.cbp-l-filters-list *,
+.cbp-l-filters-text,
+.cbp-l-filters-text *,
+.cbp-l-filters-underline,
+.cbp-l-filters-underline *,
+.cbp-l-filters-work,
+.cbp-l-filters-work * {
+  -webkit-tap-highlight-color : transparent;
+}
+
+.cbp-lazyload:after,
+.cbp-popup-loadingBox:after,
+.cbp-popup-singlePageInline:after,
+.cbp:after {
+  content           : '';
+  position          : absolute;
+  top               : 0;
+  right             : 0;
+  bottom            : 0;
+  left              : 0;
+  width             : 34px;
+  height            : 34px;
+  margin            : auto;
+  border-top        : 3px solid rgba(114,144,182,0.8);
+  border-right      : 3px solid rgba(114,144,182,0.15);
+  border-bottom     : 3px solid rgba(114,144,182,0.15);
+  border-left       : 3px solid rgba(114,144,182,0.15);
+  border-radius     : 100%;
+  -webkit-animation : cbp-rotation .8s infinite linear;
+  animation         : cbp-rotation .8s infinite linear;
+}
+
+.cbp-item {
+  display : inline-block;
+  margin  : 0 10px 20px 0;
+}
+
+.cbp {
+  z-index  : 1;
+  position : relative;
+  height   : 400px;
+  margin   : 0 auto;
+}
+
+.cbp>* {
+  visibility : hidden;
+}
+
+.cbp .cbp-item {
+  position        : absolute;
+  top             : 0;
+  left            : 0;
+  margin          : 0;
+  padding         : 0;
+  overflow        : hidden;
+  list-style-type : none;
+}
+
+.cbp img {
+  display : block;
+  width   : 100%;
+  height  : auto;
+  border  : 0;
+}
+
+.cbp a,
+.cbp a:active,
+.cbp a:hover {
+  outline         : 0;
+  text-decoration : none;
+}
+
+.cbp-ready>* {
+  visibility : visible;
+}
+
+.cbp-ready:after {
+  display    : none;
+  visibility : hidden;
+}
+
+.cbp-lazyload {
+  display    : block;
+  position   : relative;
+  background : var(--electron-light);
+}
+
+.cbp-lazyload img {
+  opacity : 1;
+}
+
+.cbp-lazyload img[data-cbp-src] {
+  opacity : 0;
+}
+
+.cbp-lazyload img:not([data-cbp-src]) {
+  -webkit-transition : opacity .7s ease-in-out;
+  transition         : opacity .7s ease-in-out;
+}
+
+.cbp-lazyload:after {
+  z-index : 0;
+}
+
+.cbp-wrapper-outer {
+  position : relative;
+  margin   : 0 auto;
+  overflow : hidden;
+}
+
+.cbp-wrapper-outer,
+.cbp-wrapper,
+.cbp-wrapper-helper {
+  z-index         : 1;
+  width           : 100%;
+  height          : 100%;
+  padding         : 0;
+  list-style-type : none;
+}
+
+.cbp-wrapper,
+.cbp-wrapper-helper {
+  position : absolute;
+  top      : 0;
+  left     : 0;
+  margin   : 0;
+}
+
+.cbp-item-off {
+  z-index        : -1;
+  visibility     : hidden;
+  pointer-events : none;
+}
+
+.cbp-item-on2off {
+  z-index : 0;
+}
+
+.cbp-item-off2on {
+  z-index : 1;
+}
+
+.cbp-item-on2on {
+  z-index : 2;
+}
+
+.cbp-item-wrapper {
+  position : relative;
+  top      : 0;
+  left     : 0;
+  width    : 100%;
+  height   : 100%;
+}
+
+.cbp-l-inline img,
+.cbp-l-project-related-wrap img {
+  display : block;
+  width   : 100%;
+  height  : auto;
+  border  : 0;
+}
+
+.cbp-addItems {
+  -webkit-transition : height .5s ease-in-out !important;
+  transition         : height .5s ease-in-out !important;
+}
+
+.cbp-addItems .cbp-item {
+  -webkit-transition : top .5s ease-in-out,
+                       left .5s ease-in-out;
+  transition         : top .5s ease-in-out,
+                       left .5s ease-in-out;
+}
+
+.cbp-addItems .cbp-item-loading {
+  -webkit-animation  : fadeIn .5s ease-in-out;
+  animation          : fadeIn .5s ease-in-out;
+  -webkit-transition : none;
+  transition         : none;
+}
+
+.cbp-panel {
+  width     : 94%;
+  max-width : 1170px;
+  margin    : 0 auto;
+}
+
+.cbp-misc-video {
+  position       : relative;
+  height         : 0;
+  padding-bottom : 56.25%;
+  background     : #000;
+  text-align     : center;
+}
+
+.cbp-misc-video iframe {
+  position : absolute;
+  top      : 0;
+  left     : 0;
+  width    : 100%;
+  height   : 100%;
+}
+
+@-webkit-keyframes cbp-rotation {
+  0 {
+    -webkit-transform : rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform : rotate(360deg);
+  }
+}
+
+@keyframes cbp-rotation {
+  0 {
+    transform : rotate(0deg);
+  }
+
+  100% {
+    transform : rotate(360deg);
+  }
+}
+
+.clearfix:after {
+  content : " ";
+  display : block;
+  height  : 0;
+  clear   : both;
+}
+
+.cbp-l-filters-left {
+  float : left;
+}
+
+.cbp-l-filters-right {
+  float : right;
+}
+
+.cbp-caption,
+.cbp-caption-activeWrap,
+.cbp-caption-defaultWrap {
+  display : block;
+}
+
+.cbp-caption-activeWrap {
+  background-color : #282727;
+}
+
+.cbp-caption-active .cbp-caption,
+.cbp-caption-active .cbp-caption-activeWrap,
+.cbp-caption-active .cbp-caption-defaultWrap {
+  z-index  : 1;
+  position : relative;
+  overflow : hidden;
+}
+
+.cbp-caption-active .cbp-caption-defaultWrap {
+  top : 0;
+}
+
+.cbp-caption-active .cbp-caption-activeWrap {
+  z-index  : 2;
+  position : absolute;
+  width    : 100%;
+  height   : 100%;
+}
+
+.cbp-l-caption-title {
+  color       : var(--electron-light);
+  font-size   : 16px;
+  line-height : 21px;
+}
+
+.cbp-l-caption-desc {
+  color       : #aaa;
+  font-size   : 12px;
+  line-height : 16px;
+}
+
+.cbp-l-caption-text {
+  padding        : 0 6px;
+  color          : var(--electron-light);
+  font-size      : 14px;
+  line-height    : 21px;
+  letter-spacing : 3px;
+}
+
+.cbp-l-caption-buttonLeft,
+.cbp-l-caption-buttonRight {
+  display          : inline-block;
+  min-width        : 90px;
+  margin           : 4px;
+  padding          : 0 6px;
+  color            : #FFFFFF;
+  background-color : #547EB1;
+  text-align       : center;
+  font-size        : 12px;
+  line-height      : 30px;
+}
+
+.cbp-l-caption-buttonLeft:hover,
+.cbp-l-caption-buttonRight:hover {
+  opacity : 0.9;
+}
+
+.cbp-caption-none .cbp-caption-activeWrap {
+  display : none;
+}
+
+.cbp-l-caption-alignLeft .cbp-l-caption-body {
+  padding : 12px 30px;
+}
+
+.cbp-caption-fadeIn .cbp-l-caption-alignLeft .cbp-l-caption-body,
+.cbp-caption-minimal .cbp-l-caption-alignLeft .cbp-l-caption-body,
+.cbp-caption-moveRight .cbp-l-caption-alignLeft .cbp-l-caption-body,
+.cbp-caption-opacity .cbp-l-caption-alignLeft .cbp-l-caption-body,
+.cbp-caption-overlayRightAlong .cbp-l-caption-alignLeft .cbp-l-caption-body,
+.cbp-caption-pushDown .cbp-l-caption-alignLeft .cbp-l-caption-body,
+.cbp-caption-pushTop .cbp-l-caption-alignLeft .cbp-l-caption-body,
+.cbp-caption-revealBottom .cbp-l-caption-alignLeft .cbp-l-caption-body,
+.cbp-caption-revealLeft .cbp-l-caption-alignLeft .cbp-l-caption-body,
+.cbp-caption-revealTop .cbp-l-caption-alignLeft .cbp-l-caption-body,
+.cbp-caption-zoom .cbp-l-caption-alignLeft .cbp-l-caption-body {
+  padding-top : 30px;
+}
+
+.cbp-l-caption-alignCenter {
+  display : table;
+  width   : 100%;
+  height  : 100%;
+}
+
+.cbp-l-caption-alignCenter .cbp-l-caption-body {
+  display        : table-cell;
+  padding        : 10px 0;
+  text-align     : center;
+  vertical-align : middle;
+}
+
+.cbp-l-caption-alignCenter .cbp-l-caption-buttonLeft,
+.cbp-l-caption-alignCenter .cbp-l-caption-buttonRight {
+  position           : relative;
+  -webkit-transition : left 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : left 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-overlayBottom .cbp-l-caption-alignCenter .cbp-l-caption-buttonLeft,
+.cbp-caption-overlayBottomAlong .cbp-l-caption-alignCenter .cbp-l-caption-buttonLeft,
+.cbp-caption-overlayBottomPush .cbp-l-caption-alignCenter .cbp-l-caption-buttonLeft {
+  left : -20px;
+}
+
+.cbp-caption-overlayBottom .cbp-l-caption-alignCenter .cbp-l-caption-buttonRight,
+.cbp-caption-overlayBottomAlong .cbp-l-caption-alignCenter .cbp-l-caption-buttonRight,
+.cbp-caption-overlayBottomPush .cbp-l-caption-alignCenter .cbp-l-caption-buttonRight {
+  left : 20px;
+}
+
+.cbp-caption:hover .cbp-l-caption-alignCenter .cbp-l-caption-buttonLeft,
+.cbp-caption:hover .cbp-l-caption-alignCenter .cbp-l-caption-buttonRight {
+  left : 0;
+}
+
+.cbp-caption-fadeIn .cbp-caption-activeWrap {
+  top                : 0;
+  opacity            : 0;
+  background-color   : rgba(0,0,0,0.85);
+  -webkit-transition : opacity 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : opacity 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-fadeIn .cbp-caption:hover .cbp-caption-activeWrap {
+  opacity : 1;
+}
+
+.cbp-caption-minimal .cbp-l-caption-desc,
+.cbp-caption-minimal .cbp-l-caption-title {
+  position           : relative;
+  left               : 0;
+  opacity            : 0;
+  -webkit-transition : -webkit-transform .35s ease-out;
+  transition         : transform .35s ease-out;
+}
+
+.cbp-caption-minimal .cbp-l-caption-title {
+  -webkit-transform : translateY(-50%);
+  transform         : translateY(-50%);
+}
+
+.cbp-caption-minimal .cbp-l-caption-desc {
+  -webkit-transform : translateY(70%);
+  transform         : translateY(70%);
+}
+
+.cbp-caption-minimal .cbp-caption:hover .cbp-l-caption-desc,
+.cbp-caption-minimal .cbp-caption:hover .cbp-l-caption-title {
+  opacity           : 1;
+  -webkit-transform : translateY(0);
+  transform         : translateY(0);
+}
+
+.cbp-caption-minimal .cbp-caption-activeWrap {
+  top              : 0;
+  opacity          : 0;
+  background-color : #000;
+  background-color : rgba(0,0,0,0.8);
+}
+
+.cbp-caption-minimal .cbp-caption:hover .cbp-caption-activeWrap {
+  opacity : 1;
+}
+
+.cbp-caption-moveRight .cbp-caption-activeWrap {
+  top                : 0;
+  left               : -100%;
+  -webkit-transition : -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-moveRight .cbp-caption:hover .cbp-caption-activeWrap {
+  -webkit-transform : translateX(100%);
+  transform         : translateX(100%);
+}
+
+.cbp-caption-overlayBottom .cbp-caption-activeWrap {
+  height             : 60px;
+  background-color   : #181616;
+  background-color   : rgba(24,22,22,0.7);
+  -webkit-transition : -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-overlayBottom .cbp-caption:hover .cbp-caption-activeWrap {
+  -webkit-transform : translateY(-100%);
+  transform         : translateY(-100%);
+}
+
+.cbp-caption-overlayBottomAlong .cbp-caption-activeWrap,
+.cbp-caption-overlayBottomAlong .cbp-caption-defaultWrap {
+  -webkit-transition : -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-overlayBottomAlong .cbp-caption-activeWrap {
+  height : 60px;
+}
+
+.cbp-caption-overlayBottomAlong .cbp-caption:hover .cbp-caption-defaultWrap {
+  -webkit-transform : translateY(-30px);
+  transform         : translateY(-30px);
+}
+
+.cbp-caption-overlayBottomAlong .cbp-caption:hover .cbp-caption-activeWrap {
+  -webkit-transform : translateY(-100%);
+  transform         : translateY(-100%);
+}
+
+.cbp-caption-overlayBottomPush .cbp-caption-defaultWrap {
+  -webkit-transition : top 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : top 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-overlayBottomPush .cbp-caption-activeWrap {
+  bottom             : -60px;
+  height             : 60px;
+  -webkit-transition : bottom 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : bottom 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-overlayBottomPush .cbp-caption:hover .cbp-caption-defaultWrap {
+  top : -60px;
+}
+
+.cbp-caption-overlayBottomPush .cbp-caption:hover .cbp-caption-activeWrap {
+  bottom : 0;
+}
+
+.cbp-caption-overlayBottomReveal .cbp-caption-defaultWrap {
+  z-index            : 2;
+  -webkit-transition : top 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : top 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-overlayBottomReveal .cbp-caption-activeWrap {
+  z-index : 1;
+  bottom  : 0;
+  height  : 60px;
+}
+
+.cbp-caption-overlayBottomReveal .cbp-caption:hover .cbp-caption-defaultWrap {
+  top : -60px;
+}
+
+.cbp-caption-overlayRightAlong .cbp-caption-activeWrap,
+.cbp-caption-overlayRightAlong .cbp-caption-defaultWrap {
+  -webkit-transition : -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-overlayRightAlong .cbp-caption-activeWrap {
+  top   : 0;
+  left  : -50%;
+  width : 50%;
+}
+
+.cbp-caption-overlayRightAlong .cbp-caption:hover .cbp-caption-defaultWrap {
+  -webkit-transform : translateX(25%);
+  transform         : translateX(25%);
+}
+
+.cbp-caption-overlayRightAlong .cbp-caption:hover .cbp-caption-activeWrap {
+  -webkit-transform : translateX(100%);
+  transform         : translateX(100%);
+}
+
+.cbp-caption-pushDown .cbp-caption-activeWrap,
+.cbp-caption-pushDown .cbp-caption-defaultWrap {
+  -webkit-transition : -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-pushDown .cbp-caption-activeWrap {
+  top    : -102%;
+  height : 102%;
+}
+
+.cbp-caption-pushDown .cbp-caption:hover .cbp-caption-defaultWrap {
+  -webkit-transform : translateY(100%);
+  transform         : translateY(100%);
+}
+
+.cbp-caption-pushDown .cbp-caption:hover .cbp-caption-activeWrap {
+  -webkit-transform : translateY(99%);
+  transform         : translateY(99%);
+}
+
+.cbp-caption-pushTop .cbp-caption-activeWrap,
+.cbp-caption-pushTop .cbp-caption-defaultWrap {
+  -webkit-transition : -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-pushTop .cbp-caption-activeWrap {
+  height : 102%;
+}
+
+.cbp-caption-pushTop .cbp-caption:hover .cbp-caption-defaultWrap {
+  -webkit-transform : translateY(-100%);
+  transform         : translateY(-100%);
+}
+
+.cbp-caption-pushTop .cbp-caption:hover .cbp-caption-activeWrap {
+  -webkit-transform : translateY(-99%);
+  transform         : translateY(-99%);
+}
+
+.cbp-caption-revealBottom .cbp-caption-defaultWrap {
+  z-index            : 2;
+  -webkit-transition : -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-revealBottom .cbp-caption-activeWrap {
+  z-index : 1;
+  top     : 0;
+}
+
+.cbp-caption-revealBottom .cbp-caption:hover .cbp-caption-defaultWrap {
+  -webkit-transform : translateY(-100%);
+  transform         : translateY(-100%);
+}
+
+.cbp-caption-revealLeft .cbp-caption-activeWrap {
+  top                : 0;
+  left               : 100%;
+  -webkit-transition : -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-revealLeft .cbp-caption:hover .cbp-caption-activeWrap {
+  -webkit-transform : translateX(-100%);
+  transform         : translateX(-100%);
+}
+
+.cbp-caption-revealTop .cbp-caption-defaultWrap {
+  z-index            : 2;
+  -webkit-transition : -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-revealTop .cbp-caption-activeWrap {
+  z-index : 1;
+  top     : 0;
+}
+
+.cbp-caption-revealTop .cbp-caption:hover .cbp-caption-defaultWrap {
+  -webkit-transform : translateY(100%);
+  transform         : translateY(100%);
+}
+
+.cbp-caption-zoom .cbp-caption-defaultWrap {
+  -webkit-transition : -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-zoom .cbp-caption:hover .cbp-caption-defaultWrap {
+  -webkit-transform : scale(1.25);
+  transform         : scale(1.25);
+}
+
+.cbp-caption-zoom .cbp-caption-activeWrap {
+  top                : 0;
+  opacity            : 0;
+  background-color   : rgba(0,0,0,0.9);
+  -webkit-transition : opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-zoom .cbp-caption:hover .cbp-caption-activeWrap {
+  opacity : 1;
+}
+
+.cbp-caption-opacity .cbp-item {
+  padding : 1px;
+}
+
+.cbp-caption-opacity .cbp-caption,
+.cbp-caption-opacity .cbp-caption-activeWrap,
+.cbp-caption-opacity .cbp-caption-defaultWrap {
+  background-color : transparent;
+}
+
+.cbp-caption-opacity .cbp-caption {
+  border : 1px solid transparent;
+}
+
+.cbp-caption-opacity .cbp-caption:hover {
+  border-color : #EDEDED;
+}
+
+.cbp-caption-opacity .cbp-caption-defaultWrap {
+  opacity            : 1;
+  -webkit-transition : opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition         : opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cbp-caption-opacity .cbp-caption:hover .cbp-caption-defaultWrap {
+  opacity : .8;
+}
+
+.cbp-caption-opacity .cbp-caption:hover .cbp-caption-activeWrap {
+  top : 0;
+}
+
+.cbp-caption-expand .cbp-caption-activeWrap {
+  height           : auto;
+  background-color : transparent;
+}
+
+.cbp-caption-expand .cbp-caption {
+  border-bottom : 1px dotted #eaeaea;
+}
+
+.cbp-caption-expand .cbp-caption-defaultWrap {
+  padding     : 12px 0 11px 26px;
+  color       : #474747;
+  font-size   : 15px;
+  line-height : 23px;
+  cursor      : pointer;
+}
+
+.cbp-caption-expand .cbp-caption-defaultWrap .fa {
+  position   : absolute;
+  top        : 16px;
+  left       : 0;
+  width      : 16px;
+  text-align : center;
+  font-size  : 14px;
+}
+
+.cbp-caption-expand .cbp-l-caption-body {
+  padding     : 0 0 20px 26px;
+  color       : #888;
+  font-size   : 13px;
+  line-height : 21px;
+}
+
+.cbp-caption-expand-active {
+  -webkit-transition : height .4s !important;
+  transition         : height .4s !important;
+}
+
+.cbp-caption-expand-active .cbp-item {
+  -webkit-transition : left .4s,
+                       top .4s !important;
+  transition         : left .4s,
+                       top .4s !important;
+}
+
+.cbp-caption-expand-open .cbp-caption-activeWrap {
+  -webkit-transition : height .4s;
+  transition         : height .4s;
+}
+
+.cbp-l-filters-alignCenter {
+  margin-bottom : 30px;
+  color         : #DADADA;
+  text-align    : center;
+  font-size     : 12px;
+  line-height   : 21px;
+}
+
+.cbp-l-filters-alignCenter .cbp-filter-item {
+  display     : inline-block;
+  position    : relative;
+  margin      : 0 0 10px;
+  padding     : 0 12px;
+  color       : #949494;
+  overflow    : visible;
+  font-size   : 13px;
+  font-weight : 400;
+  line-height : 21px;
+  transition  : all .3s ease-in-out;
+  cursor      : pointer;
+}
+
+.cbp-l-filters-alignCenter .cbp-filter-item:hover {
+  color : #2D2C2C;
+}
+
+.cbp-l-filters-alignCenter .cbp-filter-item.cbp-filter-item-active {
+  color  : #2D2C2C;
+  cursor : default;
+}
+
+.cbp-l-filters-alignCenter .cbp-filter-counter {
+  position      : absolute;
+  right         : 0;
+  bottom        : 0;
+  left          : 0;
+  width         : 34px;
+  margin        : 0 auto;
+  padding       : 4px 0;
+  color         : #FFFFFF;
+  border-radius : 3px;
+  background    : none repeat scroll 0 0 #626161;
+  text-align    : center;
+  font-size     : 11px;
+  line-height   : 18px;
+}
+
+.cbp-l-filters-alignCenter .cbp-filter-counter:after {
+  content      : "";
+  display      : none;
+  position     : absolute;
+  right        : 0;
+  bottom       : -4px;
+  left         : 0;
+  width        : 0;
+  height       : 0;
+  margin       : 0 auto;
+  border-top   : 4px solid #626161;
+  border-right : 4px solid transparent;
+  border-left  : 4px solid transparent;
+}
+
+.cbp-l-filters-alignCenter .cbp-filter-item:hover .cbp-filter-counter:after {
+  display : block;
+}
+
+.cbp-l-filters-alignCenter .cbp-filter-item:hover .cbp-filter-counter {
+  bottom : 30px;
+}
+
+.cbp-l-filters-alignLeft {
+  margin-bottom : 30px;
+}
+
+.cbp-l-filters-alignLeft .cbp-filter-item {
+  display            : inline-block;
+  position           : relative;
+  margin             : 0 8px 10px 0;
+  padding            : 0 13px;
+  color              : #888888;
+  overflow           : visible;
+  border             : 1px solid #cdcdcd;
+  background-color   : var(--electron-light);
+  font-size          : 12px;
+  line-height        : 30px;
+  -webkit-transition : all .2s ease-in-out;
+  transition         : all .2s ease-in-out;
+  cursor             : pointer;
+}
+
+.cbp-l-filters-alignLeft .cbp-filter-item:hover {
+  color : #111;
+}
+
+.cbp-l-filters-alignLeft .cbp-filter-item.cbp-filter-item-active {
+  color            : var(--electron-light);
+  border           : 1px solid #6C7A89;
+  background-color : #6C7A89;
+  cursor           : default;
+}
+
+.cbp-l-filters-alignLeft .cbp-filter-counter {
+  display : inline;
+}
+
+.cbp-l-filters-alignRight {
+  margin-bottom : 30px;
+  text-align    : right;
+}
+
+.cbp-l-filters-alignRight .cbp-filter-item {
+  display            : inline-block;
+  position           : relative;
+  margin             : 0 0 10px 5px;
+  padding            : 0 14px;
+  color              : #8B8B8B;
+  overflow           : visible;
+  border             : 1px solid #E4E2E2;
+  background-color   : transparent;
+  text-transform     : uppercase;
+  font-size          : 11px;
+  line-height        : 31px;
+  -webkit-transition : all .3s ease-in-out;
+  transition         : all .3s ease-in-out;
+  cursor             : pointer;
+}
+
+.cbp-l-filters-alignRight .cbp-filter-item:hover {
+  color : #2B3444;
+}
+
+.cbp-l-filters-alignRight .cbp-filter-item:hover .cbp-filter-counter:after {
+  display : block;
+}
+
+.cbp-l-filters-alignRight .cbp-filter-item:hover .cbp-filter-counter {
+  bottom : 44px;
+}
+
+.cbp-l-filters-alignRight .cbp-filter-item.cbp-filter-item-active {
+  color            : #FFFFFF;
+  border-color     : #049372;
+  background-color : #049372;
+  cursor           : default;
+}
+
+.cbp-l-filters-alignRight .cbp-filter-counter {
+  position      : absolute;
+  right         : 0;
+  bottom        : 0;
+  left          : 0;
+  width         : 34px;
+  margin        : 0 auto;
+  padding       : 4px 0;
+  color         : var(--electron-light);
+  border-radius : 3px;
+  background    : none repeat scroll 0 0 #049372;
+  text-align    : center;
+  font-size     : 11px;
+  line-height   : 18px;
+}
+
+.cbp-l-filters-alignRight .cbp-filter-counter:after {
+  content      : "";
+  display      : none;
+  position     : absolute;
+  right        : 0;
+  bottom       : -4px;
+  left         : 0;
+  width        : 0;
+  height       : 0;
+  margin       : 0 auto;
+  border-top   : 4px solid #049372;
+  border-right : 4px solid transparent;
+  border-left  : 4px solid transparent;
+}
+
+.cbp-l-filters-button {
+  margin-bottom : 30px;
+}
+
+.cbp-l-filters-button .cbp-filter-item {
+  display            : inline-block;
+  position           : relative;
+  margin             : 0 10px 10px 0;
+  padding            : 0 17px;
+  color              : #888888;
+  overflow           : visible;
+  border             : 1px solid #ECECEC;
+  background-color   : #FFFFFF;
+  font-size          : 12px;
+  line-height        : 32px;
+  -webkit-transition : color .3s ease-in-out,
+                       background-color .3s ease-in-out,
+                       border-color .3s ease-in-out;
+  transition         : color .3s ease-in-out,
+                       background-color .3s ease-in-out,
+                       border-color .3s ease-in-out;
+  cursor             : pointer;
+}
+
+.cbp-l-filters-button .cbp-filter-item:hover {
+  color        : #545454;
+  border-color : #DADADA;
+}
+
+.cbp-l-filters-button .cbp-filter-item.cbp-filter-item-active {
+  color            : var(--electron-light);
+  border-color     : #5d5d5d;
+  background-color : #545454;
+  cursor           : default;
+}
+
+.cbp-l-filters-button .cbp-filter-counter {
+  position         : absolute;
+  right            : 0;
+  bottom           : 0;
+  left             : 0;
+  width            : 34px;
+  margin           : 0 auto;
+  padding          : 4px 0;
+  color            : var(--electron-light);
+  opacity          : 0;
+  border-radius    : 3px;
+  background-color : #545454;
+  text-align       : center;
+  font-size        : 11px;
+  line-height      : 18px;
+}
+
+.cbp-l-filters-button .cbp-filter-counter:after {
+  content      : "";
+  display      : none;
+  position     : absolute;
+  right        : 0;
+  bottom       : -4px;
+  left         : 0;
+  width        : 0;
+  height       : 0;
+  margin       : 0 auto;
+  border-top   : 4px solid #545454;
+  border-right : 4px solid transparent;
+  border-left  : 4px solid transparent;
+}
+
+.cbp-l-filters-button .cbp-filter-item:hover .cbp-filter-counter:after {
+  display : block;
+}
+
+.cbp-l-filters-button .cbp-filter-item:hover .cbp-filter-counter {
+  bottom : 44px;
+}
+
+.cbp-l-filters-buttonCenter {
+  margin-bottom : 30px;
+  text-align    : center;
+}
+
+.cbp-l-filters-buttonCenter .cbp-filter-item {
+  display            : inline-block;
+  position           : relative;
+  margin             : 0 10px 10px 0;
+  padding            : 0 17px;
+  color              : #888888;
+  overflow           : visible;
+  border             : 1px solid #ECECEC;
+  background-color   : #FFFFFF;
+  font-size          : 12px;
+  line-height        : 32px;
+  -webkit-transition : all .3s ease-in-out;
+  transition         : all .3s ease-in-out;
+  cursor             : pointer;
+}
+
+.cbp-l-filters-buttonCenter .cbp-filter-item:hover {
+  color : #5d5d5d;
+}
+
+.cbp-l-filters-buttonCenter .cbp-filter-item.cbp-filter-item-active {
+  color        : #3B9CB3;
+  border-color : #8CD2E5;
+  cursor       : default;
+}
+
+.cbp-l-filters-buttonCenter .cbp-filter-counter {
+  position         : absolute;
+  right            : 0;
+  bottom           : 0;
+  left             : 0;
+  width            : 34px;
+  margin           : 0 auto;
+  padding          : 4px 0;
+  color            : var(--electron-light);
+  opacity          : 0;
+  border-radius    : 3px;
+  background-color : #68ABBC;
+  text-align       : center;
+  font-size        : 11px;
+  line-height      : 18px;
+}
+
+.cbp-l-filters-buttonCenter .cbp-filter-counter:after {
+  content      : "";
+  display      : none;
+  position     : absolute;
+  right        : 0;
+  bottom       : -4px;
+  left         : 0;
+  width        : 0;
+  height       : 0;
+  margin       : 0 auto;
+  border-top   : 4px solid #68ABBC;
+  border-right : 4px solid transparent;
+  border-left  : 4px solid transparent;
+}
+
+.cbp-l-filters-buttonCenter .cbp-filter-item:hover .cbp-filter-counter:after {
+  display : block;
+}
+
+.cbp-l-filters-buttonCenter .cbp-filter-item:hover .cbp-filter-counter {
+  bottom : 44px;
+}
+
+.cbp-l-filters-dropdown {
+  z-index       : 5;
+  position      : relative;
+  height        : 38px;
+  margin-bottom : 40px;
+}
+
+.cbp-l-filters-dropdownWrap {
+  position   : absolute;
+  right      : 0;
+  width      : 200px;
+  background : #4d4c4d;
+}
+
+.cbp-l-filters-dropdownHeader {
+  position    : relative;
+  margin      : 0 17px;
+  color       : #FFF;
+  font-size   : 12px;
+  line-height : 38px;
+  cursor      : default;
+}
+
+.cbp-l-filters-dropdownHeader:after {
+  content      : "";
+  position     : absolute;
+  top          : 50%;
+  right        : 0;
+  width        : 0;
+  height       : 0;
+  margin-top   : -1px;
+  border-color : #fff transparent;
+  border-width : 5px 5px 0;
+  border-style : solid;
+}
+
+.cbp-l-filters-dropdownWrap.cbp-l-filters-dropdownWrap-open .cbp-l-filters-dropdownHeader:after {
+  border-width : 0 5px 5px;
+}
+
+.cbp-l-filters-dropdownList {
+  display    : none;
+  margin     : 0;
+  padding    : 0;
+  list-style : none outside none;
+}
+
+.cbp-l-filters-dropdownList>li {
+  margin     : 0;
+  list-style : none;
+}
+
+.cbp-l-filters-dropdownWrap.cbp-l-filters-dropdownWrap-open .cbp-l-filters-dropdownList {
+  display : block;
+  margin  : 0;
+}
+
+.cbp-l-filters-dropdownList .cbp-filter-item {
+  width       : 100%;
+  margin      : 0;
+  padding     : 0 17px;
+  color       : #b3b3b3;
+  border      : none;
+  border-top  : 1px solid #595959;
+  background  : transparent;
+  text-align  : left;
+  font-size   : 12px;
+  line-height : 40px;
+  cursor      : pointer;
+}
+
+.cbp-l-filters-dropdownList .cbp-filter-item:hover {
+  color : #e6e6e6;
+}
+
+.cbp-l-filters-dropdownList .cbp-filter-item-active {
+  color  : var(--electron-light);
+  cursor : default;
+}
+
+.cbp-l-filters-dropdownWrap .cbp-filter-counter {
+  display : inline;
+}
+
+.cbp-l-filters-dropdown-floated {
+  width       : 200px;
+  float       : right;
+  margin-top  : -2px;
+  margin-left : 20px;
+}
+
+.cbp-l-filters-list {
+  content       : "";
+  display       : table;
+  clear         : both;
+  margin-bottom : 30px;
+}
+
+.cbp-l-filters-list .cbp-filter-item {
+  position           : relative;
+  float              : left;
+  margin             : 0 0 10px;
+  padding            : 0 18px;
+  color              : #585252;
+  overflow           : visible;
+  border             : 1px solid #3288C4;
+  border-right-width : 0;
+  background-color   : transparent;
+  font-size          : 12px;
+  line-height        : 35px;
+  -webkit-transition : left .3s ease-in-out;
+  transition         : left .3s ease-in-out;
+  cursor             : pointer;
+}
+
+.cbp-l-filters-list .cbp-filter-item:hover {
+  color : #000;
+}
+
+.cbp-l-filters-list .cbp-filter-item.cbp-filter-item-active {
+  color            : #FFFFFF;
+  background-color : #3288C4;
+  cursor           : default;
+}
+
+.cbp-l-filters-list-first {
+  border-radius : 6px 0 0 6px;
+}
+
+.cbp-l-filters-list-last {
+  border-radius      : 0 6px 6px 0;
+  border-right-width : 1px !important;
+}
+
+.cbp-l-filters-list .cbp-filter-counter {
+  display : inline;
+}
+
+@media
+  only screen
+  and (max-width : 600px) {
+  .cbp-l-filters-list .cbp-filter-item {
+    margin-right       : 5px;
+    border-radius      : 6px;
+    border-right-width : 1px;
+  }
+}
+
+.cbp-l-filters-work {
+  margin-bottom : 30px;
+  text-align    : center;
+}
+
+.cbp-l-filters-work .cbp-filter-item {
+  display            : inline-block;
+  position           : relative;
+  margin             : 0 5px 10px 0;
+  padding            : 0 16px;
+  color              : #888;
+  overflow           : visible;
+  background-color   : #FFFFFF;
+  text-transform     : uppercase;
+  font-size          : 11px;
+  line-height        : 37px;
+  -webkit-transition : all 0.3s ease-in-out;
+  transition         : all 0.3s ease-in-out;
+  cursor             : pointer;
+}
+
+.cbp-l-filters-work .cbp-filter-item:hover {
+  color      : var(--electron-light);
+  background : #607D8B;
+}
+
+.cbp-l-filters-work .cbp-filter-item.cbp-filter-item-active {
+  color      : var(--electron-light);
+  background : #607D8B;
+  cursor     : default;
+}
+
+.cbp-l-filters-work .cbp-filter-counter {
+  display     : inline-block;
+  margin-left : 8px;
+  text-align  : center;
+  font-size   : 11px;
+  line-height : 37px;
+}
+
+.cbp-l-filters-work .cbp-filter-counter:before {
+  content : '(';
+}
+
+.cbp-l-filters-work .cbp-filter-counter:after {
+  content : ')';
+}
+
+.cbp-l-filters-big {
+  margin-bottom : 30px;
+  text-align    : center;
+}
+
+.cbp-l-filters-big .cbp-filter-item {
+  display            : inline-block;
+  position           : relative;
+  margin             : 0 15px 10px 0;
+  padding            : 10px 23px;
+  color              : #444;
+  border             : 1px solid transparent;
+  text-transform     : uppercase;
+  font-size          : 15px;
+  line-height        : 22px;
+  -webkit-transition : all 0.3s ease-in-out;
+  transition         : all 0.3s ease-in-out;
+  cursor             : pointer;
+}
+
+.cbp-l-filters-big .cbp-filter-item:hover {
+  color : #888;
+}
+
+.cbp-l-filters-big .cbp-filter-item.cbp-filter-item-active {
+  color        : #444;
+  border-color : #d5d5d5;
+  cursor       : default;
+}
+
+.cbp-l-filters-text {
+  margin-bottom : 30px;
+  padding       : 0 15px;
+  color         : #DADADA;
+  text-align    : center;
+  font-size     : 12px;
+  line-height   : 21px;
+}
+
+.cbp-l-filters-text .cbp-filter-item {
+  display            : inline-block;
+  position           : relative;
+  margin             : 0 0 10px;
+  padding            : 0 12px;
+  color              : #949494;
+  overflow           : visible;
+  font-size          : 13px;
+  line-height        : 21px;
+  -webkit-transition : all .3s ease-in-out;
+  transition         : all .3s ease-in-out;
+  cursor             : pointer;
+}
+
+.cbp-l-filters-text .cbp-filter-item:hover {
+  color : #2D2C2C;
+}
+
+.cbp-l-filters-text .cbp-filter-item.cbp-filter-item-active {
+  color  : #2D2C2C;
+  cursor : default;
+}
+
+.cbp-l-filters-text .cbp-filter-counter {
+  position      : absolute;
+  right         : 0;
+  bottom        : 0;
+  left          : 0;
+  width         : 32px;
+  margin        : 0 auto;
+  padding       : 4px 0;
+  color         : #FFFFFF;
+  border-radius : 3px;
+  background    : none repeat scroll 0 0 #626161;
+  text-align    : center;
+  font-size     : 11px;
+  line-height   : 16px;
+}
+
+.cbp-l-filters-text .cbp-filter-counter:after {
+  content      : "";
+  display      : none;
+  position     : absolute;
+  right        : 0;
+  bottom       : -4px;
+  left         : 0;
+  width        : 0;
+  height       : 0;
+  margin       : 0 auto;
+  border-top   : 4px solid #626161;
+  border-right : 4px solid transparent;
+  border-left  : 4px solid transparent;
+}
+
+.cbp-l-filters-text .cbp-filter-item:hover .cbp-filter-counter:after {
+  display : block;
+}
+
+.cbp-l-filters-text .cbp-filter-item:hover .cbp-filter-counter {
+  bottom : 30px;
+}
+
+.cbp-l-filters-text-sort {
+  display      : inline-block;
+  margin-right : 15px;
+  color        : #949494;
+  font-size    : 13px;
+  line-height  : 21px;
+}
+
+.cbp-l-filters-underline {
+  margin-bottom : 30px;
+}
+
+.cbp-l-filters-underline .cbp-filter-item {
+  display            : inline-block;
+  position           : relative;
+  margin             : 0 20px 10px 0;
+  padding            : 8px 10px;
+  color              : #787878;
+  overflow           : visible;
+  border-bottom      : 3px solid transparent;
+  font-size          : 14px;
+  line-height        : 21px;
+  -webkit-transition : all .2s ease-in-out;
+  transition         : all .2s ease-in-out;
+  cursor             : pointer;
+}
+
+.cbp-l-filters-underline .cbp-filter-item:hover {
+  color : #111;
+}
+
+.cbp-l-filters-underline .cbp-filter-item.cbp-filter-item-active {
+  color               : #444;
+  border-bottom-color : #666;
+  cursor              : default;
+}
+
+.cbp-l-filters-underline .cbp-filter-counter {
+  display : inline;
+}
+
+.cbp-animation-quicksand {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-quicksand .cbp-item {
+  -webkit-transition : -webkit-transform .6s ease-in-out;
+  transition         : transform .6s ease-in-out;
+}
+
+.cbp-animation-quicksand .cbp-item {}
+
+.cbp-animation-quicksand .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-quicksand .cbp-item-on2off .cbp-item-wrapper {
+  -webkit-animation : quicksand-off .6s ease-out both;
+  animation         : quicksand-off .6s ease-out both;
+}
+
+.cbp-animation-quicksand .cbp-item-off2on .cbp-item-wrapper {
+  -webkit-animation : quicksand-on .6s ease-out both;
+  animation         : quicksand-on .6s ease-out both;
+}
+
+@-webkit-keyframes quicksand-off {
+  100% {
+    opacity           : 0;
+    -webkit-transform : scale3d(0, 0, 0);
+  }
+}
+
+@keyframes quicksand-off {
+  100% {
+    opacity   : 0;
+    transform : scale3d(0, 0, 0);
+  }
+}
+
+@-webkit-keyframes quicksand-on {
+  0% {
+    opacity           : 0;
+    -webkit-transform : scale3d(0, 0, 0);
+  }
+}
+
+@keyframes quicksand-on {
+  0% {
+    opacity   : 0;
+    transform : scale3d(0, 0, 0);
+  }
+}
+
+.cbp-animation-boxShadow,
+.cbp-animation-fadeOut {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-boxShadow .cbp-item,
+.cbp-animation-fadeOut .cbp-item {
+  -webkit-transition : -webkit-transform .6s ease-in-out;
+  transition         : transform .6s ease-in-out;
+}
+
+.cbp-animation-boxShadow .cbp-item,
+.cbp-animation-fadeOut .cbp-item {}
+
+.cbp-animation-boxShadow .cbp-item-wrapper,
+.cbp-animation-fadeOut .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-boxShadow .cbp-item-on2off .cbp-item-wrapper,
+.cbp-animation-fadeOut .cbp-item-on2off .cbp-item-wrapper {
+  -webkit-animation : fadeOut-off .6s ease-in-out both;
+  animation         : fadeOut-off .6s ease-in-out both;
+}
+
+.cbp-animation-boxShadow .cbp-item-off2on .cbp-item-wrapper,
+.cbp-animation-fadeOut .cbp-item-off2on .cbp-item-wrapper {
+  -webkit-animation : fadeOut-on .6s ease-in-out both;
+  animation         : fadeOut-on .6s ease-in-out both;
+}
+
+@-webkit-keyframes fadeOut-off {
+  0% {
+    opacity : 1;
+  }
+
+  80%,
+  100% {
+    opacity : 0;
+  }
+}
+
+@keyframes fadeOut-off {
+  0% {
+    opacity : 1;
+  }
+
+  80%,
+  100% {
+    opacity : 0;
+  }
+}
+
+@-webkit-keyframes fadeOut-on {
+  0% {
+    opacity : 0;
+  }
+
+  100% {
+    opacity : 1;
+  }
+}
+
+@keyframes fadeOut-on {
+  0% {
+    opacity : 0;
+  }
+
+  100% {
+    opacity : 1;
+  }
+}
+
+.cbp-animation-flipOut {
+  -webkit-transition : height .7s ease-in-out;
+  transition         : height .7s ease-in-out;
+}
+
+.cbp-animation-flipOut .cbp-item {
+  -webkit-transition : -webkit-transform .7s ease-in-out;
+  transition         : transform .7s ease-in-out;
+}
+
+.cbp-animation-flipOut .cbp-item {}
+
+.cbp-animation-flipOut .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-flipOut .cbp-item-on2off .cbp-item-wrapper {
+  -webkit-animation : flipOut-out .7s both ease-in;
+  animation         : flipOut-out .7s both ease-in;
+}
+
+.cbp-animation-flipOut .cbp-item-off2on .cbp-item-wrapper {
+  -webkit-animation : flipOut-in .7s ease-out both;
+  animation         : flipOut-in .7s ease-out both;
+}
+
+@-webkit-keyframes flipOut-out {
+  50%,
+  100% {
+    opacity           : 0.2;
+    -webkit-transform : translateZ(-1000px) rotateY(-90deg);
+  }
+}
+
+@keyframes flipOut-out {
+  50%,
+  100% {
+    opacity   : 0.2;
+    transform : translateZ(-1000px) rotateY(-90deg);
+  }
+}
+
+@-webkit-keyframes flipOut-in {
+  0%,
+  50% {
+    opacity           : 0.2;
+    -webkit-transform : translateZ(-1000px) rotateY(90deg);
+  }
+}
+
+@keyframes flipOut-in {
+  0%,
+  50% {
+    opacity   : 0.2;
+    transform : translateZ(-1000px) rotateY(90deg);
+  }
+}
+
+.cbp-animation-flipBottom {
+  -webkit-transition : height .7s ease-in-out;
+  transition         : height .7s ease-in-out;
+}
+
+.cbp-animation-flipBottom .cbp-item {
+  -webkit-transition : -webkit-transform .7s ease-in-out;
+  transition         : transform .7s ease-in-out;
+}
+
+.cbp-animation-flipBottom .cbp-item {}
+
+.cbp-animation-flipBottom .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-flipBottom .cbp-item-on2off .cbp-item-wrapper {
+  -webkit-animation : flipBottom-out .7s both ease-in;
+  animation         : flipBottom-out .7s both ease-in;
+}
+
+.cbp-animation-flipBottom .cbp-item-off2on .cbp-item-wrapper {
+  -webkit-animation : flipBottom-in .7s ease-out both;
+  animation         : flipBottom-in .7s ease-out both;
+}
+
+@-webkit-keyframes flipBottom-out {
+  50%,
+  100% {
+    opacity           : 0.2;
+    -webkit-transform : translateZ(-1000px) rotateX(-90deg);
+  }
+}
+
+@keyframes flipBottom-out {
+  50%,
+  100% {
+    opacity   : 0.2;
+    transform : translateZ(-1000px) rotateX(-90deg);
+  }
+}
+
+@-webkit-keyframes flipBottom-in {
+  0%,
+  50% {
+    opacity           : 0.2;
+    -webkit-transform : translateZ(-1000px) rotateX(90deg);
+  }
+}
+
+@keyframes flipBottom-in {
+  0%,
+  50% {
+    opacity   : 0.2;
+    transform : translateZ(-1000px) rotateX(90deg);
+  }
+}
+
+.cbp-animation-scaleSides {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-scaleSides .cbp-item {
+  -webkit-transition : -webkit-transform .6s ease-in-out;
+  transition         : transform .6s ease-in-out;
+}
+
+.cbp-animation-scaleSides .cbp-item {}
+
+.cbp-animation-scaleSides .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-scaleSides .cbp-item-on2off .cbp-item-wrapper {
+  -webkit-animation : scaleSides-out .9s ease both;
+  animation         : scaleSides-out .9s ease both;
+}
+
+.cbp-animation-scaleSides .cbp-item-off2on .cbp-item-wrapper {
+  -webkit-animation : scaleSides-in .9s ease both;
+  animation         : scaleSides-in .9s ease both;
+}
+
+@-webkit-keyframes scaleSides-out {
+  50%,
+  100% {
+    opacity           : 0;
+    -webkit-transform : scale(0.6);
+  }
+}
+
+@keyframes scaleSides-out {
+  50%,
+  100% {
+    opacity   : 0;
+    transform : scale(0.6);
+  }
+}
+
+@-webkit-keyframes scaleSides-in {
+  0%,
+  50% {
+    opacity           : 0;
+    -webkit-transform : scale(0.6);
+  }
+}
+
+@keyframes scaleSides-in {
+  0%,
+  50% {
+    opacity   : 0;
+    transform : scale(0.6);
+  }
+}
+
+.cbp-animation-skew {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-skew .cbp-item {
+  -webkit-transition : -webkit-transform .6s ease-in-out;
+  transition         : transform .6s ease-in-out;
+}
+
+.cbp-animation-skew .cbp-item {}
+
+.cbp-animation-skew .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-skew .cbp-item-on2off .cbp-item-wrapper {
+  -webkit-animation : skew-off .6s ease-out both;
+  animation         : skew-off .6s ease-out both;
+}
+
+.cbp-animation-skew .cbp-item-off2on .cbp-item-wrapper {
+  -webkit-animation : skew-on .6s ease-out both;
+  animation         : skew-on .6s ease-out both;
+}
+
+@-webkit-keyframes skew-off {
+  100% {
+    opacity           : 0;
+    -webkit-transform : scale3d(0, 0, 0) skew(20deg, 0);
+  }
+}
+
+@keyframes skew-off {
+  100% {
+    opacity   : 0;
+    transform : scale3d(0, 0, 0) skew(20deg, 0);
+  }
+}
+
+@-webkit-keyframes skew-on {
+  0% {
+    opacity           : 0;
+    -webkit-transform : scale3d(0, 0, 0) skew(0, 20deg);
+  }
+}
+
+@keyframes skew-on {
+  0% {
+    opacity   : 0;
+    transform : scale3d(0, 0, 0) skew(0, 20deg);
+  }
+}
+
+.cbp-animation-fadeOutTop {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-fadeOutTop .cbp-wrapper-outer {
+  overflow : visible;
+}
+
+.cbp-animation-fadeOutTop .cbp-item {}
+
+.cbp-animation-fadeOutTop .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-fadeOutTop .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation : fadeOutTop-out .6s both ease-in-out;
+  animation         : fadeOutTop-out .6s both ease-in-out;
+}
+
+.cbp-animation-fadeOutTop .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation : fadeOutTop-in .6s both ease-in-out;
+  animation         : fadeOutTop-in .6s both ease-in-out;
+}
+
+@-webkit-keyframes fadeOutTop-out {
+  0% {
+    opacity           : 1;
+    -webkit-transform : translateY(0);
+  }
+
+  50%,
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateY(-30px);
+  }
+}
+
+@keyframes fadeOutTop-out {
+  0% {
+    opacity   : 1;
+    transform : translateY(0);
+  }
+
+  50%,
+  100% {
+    opacity   : 0;
+    transform : translateY(-30px);
+  }
+}
+
+@-webkit-keyframes fadeOutTop-in {
+  0%,
+  50% {
+    opacity           : 0;
+    -webkit-transform : translateY(-30px);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : translateY(0);
+  }
+}
+
+@keyframes fadeOutTop-in {
+  0%,
+  50% {
+    opacity   : 0;
+    transform : translateY(-30px);
+  }
+
+  100% {
+    opacity   : 1;
+    transform : translateY(0);
+  }
+}
+
+.cbp-animation-slideLeft {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-slideLeft .cbp-item {}
+
+.cbp-animation-slideLeft .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-slideLeft .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation : slideLeft-out .8s both ease-in-out;
+  animation         : slideLeft-out .8s both ease-in-out;
+}
+
+.cbp-animation-slideLeft .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation : slideLeft-in .8s both ease-in-out;
+  animation         : slideLeft-in .8s both ease-in-out;
+}
+
+@-webkit-keyframes slideLeft-out {
+  0% {
+    opacity   : 1;
+    transform : scale(1);
+  }
+
+  25% {
+    opacity           : .75;
+    -webkit-transform : scale(0.8);
+  }
+
+  75% {
+    opacity           : .75;
+    -webkit-transform : scale(0.8) translateX(-200%);
+  }
+
+  100% {
+    opacity           : .75;
+    -webkit-transform : scale(0.8) translateX(-200%);
+  }
+}
+
+@keyframes slideLeft-out {
+  0% {
+    opacity   : 1;
+    transform : scale(1);
+  }
+
+  25% {
+    opacity   : .75;
+    transform : scale(0.8);
+  }
+
+  75% {
+    opacity   : .75;
+    transform : scale(0.8) translateX(-200%);
+  }
+
+  100% {
+    opacity   : .75;
+    transform : scale(0.8) translateX(-200%);
+  }
+}
+
+@-webkit-keyframes slideLeft-in {
+  0%,
+  25% {
+    opacity           : .75;
+    -webkit-transform : scale(0.8) translateX(200%);
+  }
+
+  75% {
+    opacity           : .75;
+    -webkit-transform : scale(0.8);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : scale(1) translateX(0);
+  }
+}
+
+@keyframes slideLeft-in {
+  0%,
+  25% {
+    opacity   : .75;
+    transform : scale(0.8) translateX(200%);
+  }
+
+  75% {
+    opacity   : .75;
+    transform : scale(0.8);
+  }
+
+  100% {
+    opacity   : 1;
+    transform : scale(1) translateX(0);
+  }
+}
+
+.cbp-animation-sequentially {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-sequentially .cbp-wrapper-outer {
+  overflow : visible;
+}
+
+.cbp-animation-sequentially .cbp-item {}
+
+.cbp-animation-sequentially .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-sequentially .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation : fadeOutTop-out .6s both ease;
+  animation         : fadeOutTop-out .6s both ease;
+}
+
+.cbp-animation-sequentially .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation : fadeOutTop-in .6s both ease-out;
+  animation         : fadeOutTop-in .6s both ease-out;
+}
+
+.cbp-animation-3dflip {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-3dflip .cbp-item {}
+
+.cbp-animation-3dflip .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-3dflip .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation        : flip-out 0.6s both ease-in-out;
+  animation                : flip-out 0.6s both ease-in-out;
+  -webkit-transform-origin : 0% 50%;
+  transform-origin         : 0% 50%;
+}
+
+.cbp-animation-3dflip .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation        : flip-in 0.6s both ease-in-out;
+  animation                : flip-in 0.6s both ease-in-out;
+  -webkit-transform-origin : 100% 50%;
+  transform-origin         : 100% 50%;
+}
+
+@-webkit-keyframes flip-out {
+  100% {
+    opacity           : 0;
+    -webkit-transform : rotateY(90deg);
+  }
+}
+
+@keyframes flip-out {
+  100% {
+    opacity   : 0;
+    transform : rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes flip-in {
+  0% {
+    opacity           : 0;
+    -webkit-transform : rotateY(-90deg);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : rotateY(0deg);
+  }
+}
+
+@keyframes flip-in {
+  0% {
+    opacity   : 0;
+    transform : rotateY(-90deg);
+  }
+
+  100% {
+    opacity   : 1;
+    transform : rotateY(0deg);
+  }
+}
+
+.cbp-animation-flipOutDelay {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-flipOutDelay .cbp-item {}
+
+.cbp-animation-flipOutDelay .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-flipOutDelay .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation : flipOut-out 1s both ease-in;
+  animation         : flipOut-out 1s both ease-in;
+}
+
+.cbp-animation-flipOutDelay .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation : flipOut-in 1s both ease-out;
+  animation         : flipOut-in 1s both ease-out;
+}
+
+.cbp-animation-slideDelay {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-slideDelay .cbp-item {}
+
+.cbp-animation-slideDelay .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-slideDelay .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation : slideDelay-out 0.5s both ease-in-out;
+  animation         : slideDelay-out 0.5s both ease-in-out;
+}
+
+.cbp-animation-slideDelay .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation : slideDelay-in 0.5s both ease-in-out;
+  animation         : slideDelay-in 0.5s both ease-in-out;
+}
+
+@-webkit-keyframes slideDelay-out {
+  100% {
+    -webkit-transform : translateX(-100%);
+  }
+}
+
+@keyframes slideDelay-out {
+  100% {
+    transform : translateX(-100%);
+  }
+}
+
+@-webkit-keyframes slideDelay-in {
+  0% {
+    -webkit-transform : translateX(100%);
+  }
+
+  100% {
+    -webkit-transform : translateX(0);
+  }
+}
+
+@keyframes slideDelay-in {
+  0% {
+    transform : translateX(100%);
+  }
+
+  100% {
+    transform : translateX(0);
+  }
+}
+
+.cbp-animation-rotateSides {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-rotateSides .cbp-item {}
+
+.cbp-animation-rotateSides .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-rotateSides .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation        : rotateSides-out .5s both ease-in;
+  animation                : rotateSides-out .5s both ease-in;
+  -webkit-transform-origin : -50% 50%;
+  transform-origin         : -50% 50%;
+}
+
+.cbp-animation-rotateSides .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation        : rotateSides-in .6s both ease-out;
+  animation                : rotateSides-in .6s both ease-out;
+  -webkit-transform-origin : 150% 50%;
+  transform-origin         : 150% 50%;
+}
+
+@-webkit-keyframes rotateSides-out {
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateZ(-500px) rotateY(90deg);
+  }
+}
+
+@keyframes rotateSides-out {
+  100% {
+    opacity   : 0;
+    transform : translateZ(-500px) rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes rotateSides-in {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateZ(-500px) rotateY(-90deg);
+  }
+
+  40% {
+    opacity           : 0;
+    -webkit-transform : translateZ(-500px) rotateY(-90deg);
+  }
+}
+
+@keyframes rotateSides-in {
+  0% {
+    opacity   : 0;
+    transform : translateZ(-500px) rotateY(-90deg);
+  }
+
+  40% {
+    opacity   : 0;
+    transform : translateZ(-500px) rotateY(-90deg);
+  }
+}
+
+.cbp-animation-foldLeft {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-foldLeft .cbp-item {}
+
+.cbp-animation-foldLeft .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-foldLeft .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation        : foldLeft-out .7s both ease;
+  animation                : foldLeft-out .7s both ease;
+  -webkit-transform-origin : 100% 50%;
+  transform-origin         : 100% 50%;
+}
+
+.cbp-animation-foldLeft .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation : foldLeft-in .7s both ease;
+  animation         : foldLeft-in .7s ease both;
+}
+
+@-webkit-keyframes foldLeft-out {
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateX(-100%) rotateY(-90deg);
+  }
+}
+
+@keyframes foldLeft-out {
+  100% {
+    opacity   : 0;
+    transform : translateX(-100%) rotateY(-90deg);
+  }
+}
+
+@-webkit-keyframes foldLeft-in {
+  0% {
+    opacity           : 0.3;
+    -webkit-transform : translateX(100%);
+  }
+}
+
+@keyframes foldLeft-in {
+  0% {
+    opacity   : 0.3;
+    transform : translateX(100%);
+  }
+}
+
+.cbp-animation-unfold {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-unfold .cbp-item {}
+
+.cbp-animation-unfold .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-unfold .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation : unfold-out .8s ease both;
+  animation         : unfold-out .8s ease both;
+}
+
+.cbp-animation-unfold .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation        : unfold-in .8s both ease;
+  animation                : unfold-in .8s both ease;
+  -webkit-transform-origin : 0% 50%;
+  transform-origin         : 0% 50%;
+}
+
+@-webkit-keyframes unfold-out {
+  90% {
+    opacity : 0.3;
+  }
+
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateX(-100%);
+  }
+}
+
+@keyframes unfold-out {
+  90% {
+    opacity : 0.3;
+  }
+
+  100% {
+    opacity   : 0;
+    transform : translateX(-100%);
+  }
+}
+
+@-webkit-keyframes unfold-in {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(100%) rotateY(90deg);
+  }
+}
+
+@keyframes unfold-in {
+  0% {
+    opacity   : 0;
+    transform : translateX(100%) rotateY(90deg);
+  }
+}
+
+.cbp-animation-scaleDown {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-scaleDown .cbp-item {}
+
+.cbp-animation-scaleDown .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-scaleDown .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation : scaleDown-out .7s ease both;
+  animation         : scaleDown-out .7s ease both;
+}
+
+.cbp-animation-scaleDown .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation : scaleDown-in .6s ease both;
+  animation         : scaleDown-in .6s ease both;
+}
+
+@-webkit-keyframes scaleDown-out {
+  100% {
+    opacity           : 0;
+    -webkit-transform : scale(0.8);
+  }
+}
+
+@keyframes scaleDown-out {
+  100% {
+    opacity   : 0;
+    transform : scale(0.8);
+  }
+}
+
+@-webkit-keyframes scaleDown-in {
+  0% {
+    -webkit-transform : translateX(100%);
+  }
+}
+
+@keyframes scaleDown-in {
+  0% {
+    transform : translateX(100%);
+  }
+}
+
+.cbp-animation-frontRow {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-frontRow .cbp-item {}
+
+.cbp-animation-frontRow .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-frontRow .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation : frontRow-out .7s both ease;
+  animation         : frontRow-out .7s both ease;
+}
+
+.cbp-animation-frontRow .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation : frontRow-in .6s both ease;
+  animation         : frontRow-in .6s both ease;
+}
+
+@-webkit-keyframes frontRow-out {
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateX(-60%) scale(0.8);
+  }
+}
+
+@keyframes frontRow-out {
+  100% {
+    opacity   : 0;
+    transform : translateX(-60%) scale(0.8);
+  }
+}
+
+@-webkit-keyframes frontRow-in {
+  0% {
+    -webkit-transform : translateX(100%) scale(0.8);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : translateX(0%) scale(1);
+  }
+}
+
+@keyframes frontRow-in {
+  0% {
+    transform : translateX(100%) scale(0.8);
+  }
+
+  100% {
+    opacity   : 1;
+    transform : translateX(0%) scale(1);
+  }
+}
+
+.cbp-animation-rotateRoom {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-rotateRoom .cbp-item {}
+
+.cbp-animation-rotateRoom .cbp-item-wrapper {
+  -webkit-transform-style : preserve-3d;
+  transform-style         : preserve-3d;
+}
+
+.cbp-animation-rotateRoom .cbp-wrapper-helper .cbp-item-wrapper {
+  -webkit-animation        : rotateRoom-out .8s both ease;
+  animation                : rotateRoom-out .8s both ease;
+  -webkit-transform-origin : 100% 50%;
+  transform-origin         : 100% 50%;
+}
+
+.cbp-animation-rotateRoom .cbp-wrapper .cbp-item-wrapper {
+  -webkit-animation        : rotateRoom-in .8s both ease;
+  animation                : rotateRoom-in .8s both ease;
+  -webkit-transform-origin : 0% 50%;
+  transform-origin         : 0% 50%;
+}
+
+@-webkit-keyframes rotateRoom-out {
+  90% {
+    opacity : .3;
+  }
+
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateX(-100%) rotateY(90deg);
+  }
+}
+
+@keyframes rotateRoom-out {
+  90% {
+    opacity : .3;
+  }
+
+  100% {
+    opacity   : 0;
+    transform : translateX(-100%) rotateY(90deg);
+  }
+}
+
+@-webkit-keyframes rotateRoom-in {
+  0% {
+    opacity           : .3;
+    -webkit-transform : translateX(100%) rotateY(-90deg);
+  }
+}
+
+@keyframes rotateRoom-in {
+  0% {
+    opacity   : .3;
+    transform : translateX(100%) rotateY(-90deg);
+  }
+}
+
+.cbp-animation-bounceBottom {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-bounceBottom .cbp-wrapper-helper {
+  -webkit-animation : bounceBottom-out .6s both ease-in-out;
+  animation         : bounceBottom-out .6s both ease-in-out;
+}
+
+.cbp-animation-bounceBottom .cbp-wrapper {
+  -webkit-animation : bounceBottom-in .6s both ease-in-out;
+  animation         : bounceBottom-in .6s both ease-in-out;
+}
+
+@-webkit-keyframes bounceBottom-out {
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateY(100%);
+  }
+}
+
+@keyframes bounceBottom-out {
+  100% {
+    opacity   : 0;
+    transform : translateY(100%);
+  }
+}
+
+@-webkit-keyframes bounceBottom-in {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateY(100%);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : translateY(0);
+  }
+}
+
+@keyframes bounceBottom-in {
+  0% {
+    opacity   : 0;
+    transform : translateY(100%);
+  }
+
+  100% {
+    opacity   : 1;
+    transform : translateY(0);
+  }
+}
+
+.cbp-animation-bounceLeft {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-bounceLeft .cbp-wrapper-helper {
+  -webkit-animation : bounceLeft-out .6s both ease-in-out;
+  animation         : bounceLeft-out .6s both ease-in-out;
+}
+
+.cbp-animation-bounceLeft .cbp-wrapper {
+  -webkit-animation : bounceLeft-in .6s both ease-in-out;
+  animation         : bounceLeft-in .6s both ease-in-out;
+}
+
+@-webkit-keyframes bounceLeft-out {
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateX(-100%);
+  }
+}
+
+@keyframes bounceLeft-out {
+  100% {
+    opacity   : 0;
+    transform : translateX(-100%);
+  }
+}
+
+@-webkit-keyframes bounceLeft-in {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(-100%);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : translateX(0);
+  }
+}
+
+@keyframes bounceLeft-in {
+  0% {
+    opacity   : 0;
+    transform : translateX(-100%);
+  }
+
+  100% {
+    opacity   : 1;
+    transform : translateX(0);
+  }
+}
+
+.cbp-animation-bounceTop {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-bounceTop .cbp-wrapper-helper {
+  -webkit-animation : bounceTop-out .6s both ease-in-out;
+  animation         : bounceTop-out .6s both ease-in-out;
+}
+
+.cbp-animation-bounceTop .cbp-wrapper {
+  -webkit-animation : bounceTop-in .6s both ease-in-out;
+  animation         : bounceTop-in .6s both ease-in-out;
+}
+
+@-webkit-keyframes bounceTop-out {
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateY(-100%);
+  }
+}
+
+@keyframes bounceTop-out {
+  100% {
+    opacity   : 0;
+    transform : translateY(-100%);
+  }
+}
+
+@-webkit-keyframes bounceTop-in {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateY(-100%);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : translateY(0);
+  }
+}
+
+@keyframes bounceTop-in {
+  0% {
+    opacity   : 0;
+    transform : translateY(-100%);
+  }
+
+  100% {
+    opacity   : 1;
+    transform : translateY(0);
+  }
+}
+
+.cbp-animation-moveLeft {
+  -webkit-transition : height .6s ease-in-out;
+  transition         : height .6s ease-in-out;
+}
+
+.cbp-animation-moveLeft .cbp-wrapper-helper {
+  -webkit-animation : moveLeft-out .6s both ease-in-out;
+  animation         : moveLeft-out .6s both ease-in-out;
+}
+
+.cbp-animation-moveLeft .cbp-wrapper {
+  -webkit-animation : moveLeft-in .6s both ease-in-out;
+  animation         : moveLeft-in .6s both ease-in-out;
+}
+
+@-webkit-keyframes moveLeft-out {
+  100% {
+    opacity           : 0;
+    -webkit-transform : translateX(-100%);
+  }
+}
+
+@keyframes moveLeft-out {
+  100% {
+    opacity   : 0;
+    transform : translateX(-100%);
+  }
+}
+
+@-webkit-keyframes moveLeft-in {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateX(100%);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : translateX(0);
+  }
+}
+
+@keyframes moveLeft-in {
+  0% {
+    opacity   : 0;
+    transform : translateX(100%);
+  }
+
+  100% {
+    opacity   : 1;
+    transform : translateX(0);
+  }
+}
+
+.cbp-displayType-bottomToTop {}
+
+.cbp-displayType-bottomToTop .cbp-item {
+  -webkit-animation : fadeInBottomToTop .3s both ease-in;
+  animation         : fadeInBottomToTop .3s both ease-in;
+}
+
+@-webkit-keyframes fadeInBottomToTop {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateY(50px);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : translateY(0);
+  }
+}
+
+@keyframes fadeInBottomToTop {
+  0% {
+    opacity   : 0;
+    transform : translateY(50px);
+  }
+
+  100% {
+    opacity   : 1;
+    transform : translateY(0);
+  }
+}
+
+.cbp-displayType-fadeIn {
+  -webkit-animation : fadeIn .5s both ease-in;
+  animation         : fadeIn .5s both ease-in;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity : 0;
+  }
+
+  100% {
+    opacity : 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity : 0;
+  }
+
+  100% {
+    opacity : 1;
+  }
+}
+
+.cbp-displayType-fadeInToTop {}
+
+@-webkit-keyframes fadeInToTop {
+  0% {
+    opacity           : 0;
+    -webkit-transform : translateY(30px);
+  }
+
+  100% {
+    opacity           : 1;
+    -webkit-transform : translateY(0);
+  }
+}
+
+@keyframes fadeInToTop {
+  0% {
+    opacity   : 0;
+    transform : translateY(30px);
+  }
+
+  100% {
+    opacity   : 1;
+    transform : translateY(0);
+  }
+}
+
+.cbp-displayType-sequentially .cbp-item {
+  -webkit-animation : fadeIn .5s both ease-in;
+  animation         : fadeIn .5s both ease-in;
+}
+
+.cbp-lightbox img {
+  display : block;
+  width   : 100%;
+  height  : auto;
+  border  : 0;
+}
+
+.cbp-popup-ie8bg {
+  z-index    : -1;
+  position   : absolute;
+  top        : 0;
+  left       : 0;
+  width      : 100%;
+  height     : 100%;
+  min-height : 100%;
+  background : #000;
+}
+
+.cbp-popup-wrap {
+  display    : none;
+  position   : fixed;
+  top        : 0;
+  left       : 0;
+  width      : 100%;
+  height     : 100%;
+  overflow-y : hidden;
+  text-align : center;
+}
+
+.cbp-popup-wrap video {
+  outline : 0 none;
+}
+
+.cbp-popup-lightbox {
+  display         : flex;
+  background      : rgba(0,0,0,0.8);
+  align-items     : center;
+  justify-content : center;
+}
+
+.cbp-popup-singlePage {
+  padding    : 0;
+  background : var(--electron-light);
+}
+
+.cbp-popup-wrap:before {
+  content        : "";
+  display        : inline-block;
+  height         : 100%;
+  vertical-align : middle;
+}
+
+.cbp-popup-content {
+  display        : inline-block;
+  position       : relative;
+  max-width      : 100%;
+  text-align     : left;
+  vertical-align : middle;
+}
+
+.cbp-popup-singlePage .cbp-popup-content {
+  z-index        : 1;
+  position       : relative;
+  width          : 94%;
+  max-width      : 1024px;
+  margin-top     : 145px;
+  vertical-align : top;
+}
+
+.cbp-popup-singlePage .cbp-popup-content-basic {
+  z-index        : 1;
+  display        : inline-block;
+  position       : relative;
+  width          : 100%;
+  margin-top     : 104px;
+  text-align     : left;
+  vertical-align : top;
+}
+
+.cbp-popup-lightbox-figure {
+  position : relative;
+}
+
+.cbp-popup-lightbox-bottom {
+  position   : absolute;
+  top        : 100%;
+  left       : 0;
+  width      : 100%;
+  margin-top : 3px;
+}
+
+.cbp-popup-lightbox-title {
+  padding-right : 70px;
+  font-size     : 12px;
+  line-height   : 21px;
+}
+
+.cbp-popup-lightbox-counter {
+  position    : absolute;
+  top         : 0;
+  right       : 0;
+  color       : #eee;
+  font-size   : 12px;
+  line-height : 18px;
+}
+
+.cbp-popup-lightbox-img {
+  display    : block;
+  width      : auto;
+  max-width  : 100%;
+  height     : auto;
+  margin     : 40px 0 40px;
+  box-shadow : 0 0 8px rgba(0,0,0,0.6);
+}
+
+.cbp-popup-lightbox-img[data-action] {
+  cursor : pointer;
+}
+
+.cbp-popup-lightbox-isIframe .cbp-popup-content {
+  width : 75%;
+}
+
+@media
+  only screen
+  and (max-width : 768px) {
+  .cbp-popup-lightbox-isIframe .cbp-popup-content {
+    width : 95%;
+  }
+}
+
+.cbp-popup-lightbox-isIframe .cbp-lightbox-bottom {
+  position   : absolute;
+  top        : 100%;
+  left       : 0;
+  width      : 100%;
+  margin-top : 3px;
+}
+
+.cbp-popup-lightbox-iframe {
+  position       : relative;
+  height         : 0;
+  padding-bottom : 56.25%;
+  background     : #000;
+}
+
+.cbp-popup-lightbox-iframe iframe {
+  position   : absolute;
+  top        : 0;
+  left       : 0;
+  width      : 100%;
+  height     : 100%;
+  box-shadow : 0 0 8px rgba(0,0,0,0.6);
+}
+
+.cbp-popup-lightbox-iframe audio {
+  margin-top : 27%;
+}
+
+.cbp-popup-singlePage .cbp-popup-navigation-wrap {
+  z-index          : 9990;
+  position         : absolute;
+  top              : 0;
+  left             : 0;
+  width            : 100%;
+  height           : 104px;
+  background-color : #3D4750;
+}
+
+.cbp-popup-singlePage .cbp-popup-navigation {
+  position : relative;
+  width    : 100%;
+  height   : 100%;
+}
+
+.cbp-popup-singlePage-sticky .cbp-popup-navigation-wrap {
+  position : fixed;
+  top      : 0 !important;
+}
+
+.cbp-popup-singlePage-counter {
+  position    : absolute;
+  top         : 0;
+  right       : 40px;
+  bottom      : 0;
+  height      : 30px;
+  margin      : auto;
+  color       : var(--electron-light);
+  font-size   : 13px;
+  line-height : 30px;
+}
+
+@media
+  only screen
+  and (max-width : 768px) {
+  .cbp-popup-singlePage-counter {
+    right : 3%;
+  }
+}
+
+.cbp-popup-close,
+.cbp-popup-next,
+.cbp-popup-prev {
+  position            : absolute;
+  padding             : 0;
+  border              : medium none;
+  outline             : 0;
+  -moz-user-select    : none;
+  -ms-user-select     : none;
+  -webkit-user-select : none;
+  user-select         : none;
+  cursor              : pointer;
+}
+
+.cbp-popup-lightbox .cbp-popup-close,
+.cbp-popup-lightbox .cbp-popup-next,
+.cbp-popup-lightbox .cbp-popup-prev {
+  visibility : hidden;
+}
+
+.cbp-popup-ready.cbp-popup-lightbox .cbp-popup-close,
+.cbp-popup-ready.cbp-popup-lightbox .cbp-popup-next,
+.cbp-popup-ready.cbp-popup-lightbox .cbp-popup-prev {
+  visibility : visible;
+}
+
+.cbp-popup-lightbox .cbp-popup-prev {
+  top        : 0;
+  bottom     : 0;
+  left       : 20px;
+  width      : 44px;
+  height     : 44px;
+  margin     : auto;
+  background : url("images/cbp-sprite.png") no-repeat scroll 0 0 transparent;
+}
+
+.cbp-popup-lightbox .cbp-popup-prev:hover {
+  background-position : 0 -46px;
+}
+
+.cbp-popup-singlePage .cbp-popup-prev {
+  top        : 0;
+  right      : 108px;
+  bottom     : 0;
+  left       : 0;
+  width      : 44px;
+  height     : 44px;
+  margin     : auto;
+  background : url("images/cbp-sprite.png") no-repeat scroll 0 -92px transparent;
+}
+
+.cbp-popup-singlePage .cbp-popup-prev:hover {
+  background-position : 0 -138px;
+}
+
+.cbp-popup-lightbox .cbp-popup-next {
+  top        : 0;
+  right      : 20px;
+  bottom     : 0;
+  width      : 44px;
+  height     : 44px;
+  margin     : auto;
+  background : url("images/cbp-sprite.png") no-repeat scroll -46px 0 transparent;
+}
+
+.cbp-popup-lightbox .cbp-popup-next:hover {
+  background-position : -46px -46px;
+}
+
+.cbp-popup-singlePage .cbp-popup-next {
+  top        : 0;
+  right      : 0;
+  bottom     : 0;
+  left       : 108px;
+  width      : 44px;
+  height     : 44px;
+  margin     : auto;
+  background : url("images/cbp-sprite.png") no-repeat scroll -46px -92px transparent;
+}
+
+.cbp-popup-singlePage .cbp-popup-next:hover {
+  background-position : -46px -138px;
+}
+
+.cbp-popup-lightbox .cbp-popup-close {
+  top        : 20px;
+  right      : 20px;
+  width      : 40px;
+  height     : 40px;
+  background : url("images/cbp-sprite.png") no-repeat scroll -92px 0 transparent;
+}
+
+.cbp-popup-lightbox .cbp-popup-close:hover {
+  background-position : -92px -46px;
+}
+
+.cbp-popup-singlePage .cbp-popup-close {
+  top        : 0;
+  right      : 0;
+  bottom     : 0;
+  left       : 0;
+  width      : 44px;
+  height     : 44px;
+  margin     : auto;
+  background : url("images/cbp-sprite.png") no-repeat scroll -92px -92px transparent;
+}
+
+.cbp-popup-singlePage .cbp-popup-close:hover {
+  background-position : -92px -138px;
+}
+
+.cbp-popup-singlePage .cbp-popup-ie8bg {
+  background-color : var(--electron-light);
+}
+
+@media
+  only screen
+  and (max-width  : 360px),
+  (max-height : 600px) {
+  .cbp-popup-close,
+  .cbp-popup-next,
+  .cbp-popup-prev {
+    -ms-transform     : scale(0.8);
+    -webkit-transform : scale(0.8);
+    transform         : scale(0.8);
+  }
+
+  .cbp-popup-lightbox .cbp-popup-close {
+    top   : 10px;
+    right : 10px;
+  }
+
+  .cbp-popup-lightbox .cbp-popup-next {
+    right : 10px;
+  }
+
+  .cbp-popup-lightbox .cbp-popup-prev {
+    left : 10px;
+  }
+
+  .cbp-popup-singlePage .cbp-popup-navigation-wrap {
+    height : 84px;
+  }
+
+  .cbp-popup-singlePage .cbp-popup-content {
+    margin-top : 120px;
+  }
+}
+
+.cbp-popup-loadingBox {
+  position : absolute;
+  top      : 0;
+  left     : 0;
+  width    : 100%;
+  height   : 100%;
+}
+
+.cbp-popup-lightbox .cbp-popup-loadingBox:after {
+  border-top    : 3px solid rgba(255,255,255,0.85);
+  border-right  : 3px solid rgba(255,255,255,0.3);
+  border-bottom : 3px solid rgba(255,255,255,0.3);
+  border-left   : 3px solid rgba(255,255,255,0.3);
+}
+
+.cbp-popup-ready .cbp-popup-loadingBox {
+  display    : none;
+  visibility : hidden;
+}
+
+.cbp-popup-loading .cbp-popup-loadingBox {
+  display    : block;
+  visibility : visible;
+}
+
+.cbp-popup-transitionend {
+  overflow-y : scroll;
+}
+
+.cbp-popup-singlePage {
+  left               : 100%;
+  -webkit-transition : left .6s ease-in-out;
+  transition         : left .6s ease-in-out;
+}
+
+.cbp-popup-singlePage.cbp-popup-loading .cbp-popup-content {
+  opacity : 0;
+}
+
+.cbp-popup-singlePage-open {
+  left : 0;
+}
+
+.cbp-popup-singlePage.cbp-popup-singlePage-fade {
+  left               : 0;
+  opacity            : 0;
+  -webkit-transition : opacity .25s ease-in-out;
+  transition         : opacity .25s ease-in-out;
+}
+
+.cbp-popup-singlePage-open.cbp-popup-singlePage-fade {
+  opacity : 1;
+}
+
+.cbp-popup-singlePage.cbp-popup-singlePage-right {
+  left               : -100%;
+  -webkit-transition : left .6s ease-in-out;
+  transition         : left .6s ease-in-out;
+}
+
+.cbp-popup-singlePage-open.cbp-popup-singlePage-right {
+  left : 0;
+}
+
+.cbp-l-project-title {
+  margin-bottom  : 15px;
+  color          : #454444;
+  text-align     : center;
+  text-transform : uppercase;
+  font-size      : 42px;
+  line-height    : 46px;
+  letter-spacing : 2px;
+}
+
+.cbp-l-project-subtitle {
+  max-width   : 500px;
+  margin      : 0 auto 50px;
+  color       : #787878;
+  text-align  : center;
+  font-size   : 14px;
+  line-height : 21px;
+}
+
+.cbp-popup-singlePage .cbp-popup-content .cbp-l-project-img {
+  display   : block;
+  max-width : 100%;
+  margin    : 0 auto;
+}
+
+.cbp-l-project-container {
+  clear    : both;
+  margin   : 40px auto 0;
+  overflow : hidden;
+}
+
+.cbp-l-project-desc {
+  width : 62%;
+  float : left;
+}
+
+.cbp-l-inline-social-wrapper,
+.cbp-l-project-social-wrapper {
+  display  : inline-block;
+  width    : 100px;
+  height   : 20px;
+  overflow : hidden;
+}
+
+.cbp-l-inline-social-wrapper {
+  margin-top : 5px;
+}
+
+.cbp-l-project-details {
+  width         : 38%;
+  float         : right;
+  margin-bottom : 15px;
+  padding-left  : 60px;
+}
+
+@media
+  only screen
+  and (max-width : 768px) {
+  .cbp-l-project-title {
+    font-size   : 30px;
+    line-height : 34px;
+  }
+
+  .cbp-l-project-desc {
+    width : 100%;
+  }
+
+  .cbp-l-project-details {
+    width        : 100%;
+    margin-top   : 20px;
+    padding-left : 0;
+  }
+}
+
+.cbp-l-project-desc-title {
+  margin-bottom : 22px;
+  color         : #444;
+  border-bottom : 1px solid #cdcdcd;
+}
+
+.cbp-l-project-desc-title span,
+.cbp-l-project-details-title span {
+  display       : inline-block;
+  margin        : 0 0 -1px 0;
+  padding       : 0 5px 0 0;
+  border-bottom : 1px solid #747474;
+  font-size     : 16px;
+  line-height   : 36px;
+}
+
+.cbp-l-project-desc-text {
+  margin-bottom : 20px;
+  color         : #555;
+  font-size     : 13px;
+  line-height   : 20px;
+}
+
+.cbp-l-project-details-title {
+  margin-bottom : 19px;
+  color         : #444;
+  border-bottom : 1px solid #cdcdcd;
+}
+
+.cbp-l-project-details-list {
+  margin     : 0;
+  padding    : 0;
+  list-style : none;
+}
+
+.cbp-l-project-details-list>div,
+.cbp-l-project-details-list>li {
+  padding       : inherit;
+  color         : #666;
+  border-bottom : 1px dotted #DFDFDF;
+  font-size     : 12px;
+  line-height   : 30px;
+}
+
+.cbp-l-project-details-list>div:last-child,
+.cbp-l-project-details-list>li:last-child {
+  border : none;
+}
+
+.cbp-l-project-details-list strong {
+  display     : inline-block;
+  min-width   : 100px;
+  color       : #696969;
+  font-weight : 600;
+}
+
+.cbp-l-project-details-visit {
+  float            : right;
+  clear            : both;
+  margin-top       : 25px;
+  padding          : 8px 19px;
+  color            : #FFFFFF;
+  background-color : #62B57B;
+  text-decoration  : none;
+  text-transform   : uppercase;
+  font-size        : 11px;
+  line-height      : 18px;
+  letter-spacing   : .5px;
+}
+
+.cbp-l-project-details-visit:hover {
+  color   : var(--electron-light);
+  opacity : 0.9;
+}
+
+.cbp-l-project-related-wrap {
+  margin    : 0;
+  padding   : 0;
+  font-size : 0;
+}
+
+.cbp-l-project-related-item {
+  max-width   : 30%;
+  float       : left;
+  margin-left : 5%;
+}
+
+.cbp-l-project-related-item:first-child {
+  margin-left : 0;
+}
+
+.cbp-l-project-related-title {
+  margin-top  : 20px;
+  color       : #474747;
+  font-size   : 14px;
+  line-height : 18px;
+}
+
+.cbp-l-project-related-link {
+  text-decoration : none;
+}
+
+.cbp-l-project-related-link:hover {
+  opacity : 0.9;
+}
+
+.cbp-l-member-img {
+  width      : 40%;
+  float      : left;
+  margin-top : 20px;
+}
+
+.cbp-l-member-img img {
+  display   : inline-block;
+  width     : auto;
+  max-width : 100%;
+  height    : auto;
+  border    : 1px solid #e2e2e2;
+  border    : 0;
+}
+
+.cbp-l-member-info {
+  width        : 60%;
+  float        : left;
+  margin-top   : 20px;
+  padding-left : 25px;
+}
+
+@media
+  only screen
+  and (max-width : 768px) {
+  .cbp-l-member-img {
+    width      : 100%;
+    text-align : center;
+  }
+
+  .cbp-l-member-info {
+    width        : 100%;
+    padding-left : 0;
+  }
+}
+
+.cbp-l-member-name {
+  color       : #474747;
+  font-size   : 28px;
+  line-height : 28px;
+}
+
+.cbp-l-member-position {
+  margin-top  : 6px;
+  color       : #888;
+  font-size   : 13px;
+  line-height : 21px;
+}
+
+.cbp-l-member-desc {
+  margin-top  : 25px;
+  color       : #474747;
+  font-size   : 12px;
+  line-height : 18px;
+}
+
+.cbp-popup-singlePageInline-open {
+  -webkit-transition : height .5s ease 0s !important;
+  transition         : height .5s ease 0s !important;
+}
+
+.cbp-popup-singlePageInline-open .cbp-item {
+  -webkit-transition : -webkit-transform .5s ease 0s !important;
+  transition         : transform .5s ease 0s !important;
+}
+
+.cbp-popup-singlePageInline-close .cbp-popup-singlePageInline:after {
+  display    : none;
+  visibility : hidden;
+}
+
+.cbp-popup-singlePageInline-close .cbp-popup-singlePageInline .cbp-popup-content,
+.cbp-popup-singlePageInline-close .cbp-popup-singlePageInline .cbp-popup-navigation {
+  -webkit-transition-delay : 0;
+  transition-delay         : 0;
+}
+
+.cbp-popup-singlePageInline {
+  z-index  : 0;
+  position : absolute;
+  top      : 0;
+  left     : 0;
+  width    : 100%;
+  overflow : hidden;
+}
+
+.cbp-popup-singlePageInline .cbp-popup-content {
+  z-index    : 1;
+  width      : 100%;
+  min-height : 300px;
+  opacity    : 0;
+}
+
+.cbp-popup-singlePageInline .cbp-popup-content,
+.cbp-popup-singlePageInline .cbp-popup-navigation {
+  -webkit-transition : opacity .4s ease-in .2s;
+  transition         : opacity .4s ease-in .2s;
+}
+
+.cbp-popup-singlePageInline .cbp-popup-navigation {
+  z-index  : 2;
+  position : absolute;
+  top      : 0;
+  right    : 0;
+  width    : 40px;
+  height   : 40px;
+  opacity  : 0;
+}
+
+.cbp-popup-singlePageInline .cbp-popup-close {
+  top        : 30px;
+  right      : 20px;
+  width      : 40px;
+  height     : 40px;
+  background : url("images/cbp-sprite.png") no-repeat scroll -92px 0 transparent;
+}
+
+.cbp-popup-singlePageInline .cbp-popup-close:hover {
+  opacity : 0.7;
+}
+
+.cbp-popup-singlePageInline-ready {
+  z-index : 4;
+}
+
+.cbp-popup-singlePageInline-ready .cbp-popup-content,
+.cbp-popup-singlePageInline-ready .cbp-popup-navigation {
+  opacity : 1;
+}
+
+.cbp-popup-singlePageInline-ready:after {
+  display    : none;
+  visibility : hidden;
+}
+
+.cbp-singlePageInline-active {
+  opacity : 0.6 !important;
+}
+
+.cbp-l-inline {
+  margin     : 20px 0;
+  padding    : 30px;
+  overflow   : hidden;
+  background : #FAFAFA;
+}
+
+.cbp-l-inline-left {
+  width : 44%;
+  float : left;
+}
+
+.cbp-l-project-img {
+  max-width : 100%;
+}
+
+.cbp-l-inline-right {
+  width        : 56%;
+  float        : right;
+  padding-left : inherit;
+}
+
+@media
+  only screen
+  and (max-width : 768px) {
+  .cbp-l-inline-left {
+    width      : 100%;
+    margin-top : 40px;
+    text-align : center;
+  }
+
+  .cbp-l-inline-right {
+    width        : 100%;
+    margin-top   : 20px;
+    padding-left : 0;
+  }
+}
+
+.cbp-l-inline-title {
+  color       : #474747;
+  font-size   : 28px;
+  font-weight : 400;
+  line-height : 30px;
+}
+
+.cbp-l-inline-subtitle {
+  margin-top  : 7px;
+  color       : #888;
+  font-size   : 13px;
+  font-weight : 400;
+  line-height : 21px;
+}
+
+.cbp-l-inline-desc {
+  margin-top  : 25px;
+  color       : #474747;
+  font-size   : 13px;
+  font-weight : 400;
+  line-height : 20px;
+}
+
+.cbp-l-inline-view-wrap {
+  text-align : right;
+}
+
+.cbp-l-inline-view {
+  display         : inline-block;
+  margin-top      : 40px;
+  padding         : 0 20px;
+  color           : #9C9C9C;
+  border          : 1px solid #ccc;
+  text-decoration : none;
+  font-size       : 13px;
+  font-weight     : 400;
+  line-height     : 35px;
+}
+
+.cbp-l-inline-view:hover {
+  color : #757575;
+}
+
+.cbp-l-inline-details {
+  margin-top  : 15px;
+  font-size   : 13px;
+  line-height : 22px;
+}
+
+.cbp-l-loadMore-button-defaultText,
+.cbp-l-loadMore-defaultText {
+  display : block;
+}
+
+.cbp-l-loadMore-button-loadingText,
+.cbp-l-loadMore-button-noMoreLoading,
+.cbp-l-loadMore-loadingText,
+.cbp-l-loadMore-noMoreLoading {
+  display : none;
+}
+
+.cbp-l-loadMore-loading .cbp-l-loadMore-button-loadingText,
+.cbp-l-loadMore-loading .cbp-l-loadMore-loadingText {
+  display : block;
+}
+
+.cbp-l-loadMore-loading .cbp-l-loadMore-button-defaultText,
+.cbp-l-loadMore-loading .cbp-l-loadMore-button-noMoreLoading,
+.cbp-l-loadMore-loading .cbp-l-loadMore-defaultText,
+.cbp-l-loadMore-loading .cbp-l-loadMore-noMoreLoading {
+  display : none;
+}
+
+.cbp-l-loadMore-stop .cbp-l-loadMore-button-noMoreLoading,
+.cbp-l-loadMore-stop .cbp-l-loadMore-noMoreLoading {
+  display : block;
+}
+
+.cbp-l-loadMore-stop .cbp-l-loadMore-button-defaultText,
+.cbp-l-loadMore-stop .cbp-l-loadMore-button-loadingText,
+.cbp-l-loadMore-stop .cbp-l-loadMore-defaultText,
+.cbp-l-loadMore-stop .cbp-l-loadMore-loadingText {
+  display : none;
+}
+
+.cbp-l-loadMore-bgbutton {
+  text-align : center;
+}
+
+.cbp-l-loadMore-bgbutton .cbp-l-loadMore-link {
+  display            : inline-block;
+  min-width          : 80px;
+  margin-top         : 50px;
+  padding            : 0 50px;
+  color              : #7E7B7B;
+  border             : 1px solid #DEDEDE;
+  outline            : 0;
+  box-shadow         : none;
+  text-decoration    : none;
+  font-size          : 13px;
+  font-weight        : 400;
+  line-height        : 40px;
+  letter-spacing     : 1px;
+  -webkit-transition : color .25s;
+  transition         : color .25s;
+}
+
+.cbp-l-loadMore-bgbutton .cbp-l-loadMore-link.cbp-l-loadMore-loading,
+.cbp-l-loadMore-bgbutton .cbp-l-loadMore-link:hover {
+  color : #B0B0B0;
+}
+
+.cbp-l-loadMore-bgbutton .cbp-l-loadMore-link.cbp-l-loadMore-stop {
+  color  : #B0B0B0;
+  cursor : default;
+}
+
+.cbp-l-loadMore-button {
+  text-align : center;
+}
+
+.cbp-l-loadMore-button .cbp-l-loadMore-button-link,
+.cbp-l-loadMore-button .cbp-l-loadMore-link {
+  display            : inline-block;
+  min-width          : 80px;
+  margin-top         : 40px;
+  padding            : 0 30px;
+  color              : #7E7B7B;
+  border             : 1px solid #DEDEDE;
+  outline            : 0;
+  box-shadow         : none;
+  text-decoration    : none;
+  font-size          : 12px;
+  font-weight        : 400;
+  line-height        : 36px;
+  -webkit-transition : color .25s;
+  transition         : color .25s;
+}
+
+.cbp-l-loadMore-button .cbp-l-loadMore-button-link:hover,
+.cbp-l-loadMore-button .cbp-l-loadMore-link.cbp-l-loadMore-loading,
+.cbp-l-loadMore-button .cbp-l-loadMore-link:hover {
+  color : #B0B0B0;
+}
+
+.cbp-l-loadMore-button .cbp-l-loadMore-button-link.cbp-l-loadMore-button-stop,
+.cbp-l-loadMore-button .cbp-l-loadMore-button-link.cbp-l-loadMore-stop,
+.cbp-l-loadMore-button .cbp-l-loadMore-link.cbp-l-loadMore-stop {
+  color  : #B0B0B0;
+  cursor : default;
+}
+
+.cbp-l-loadMore-text {
+  text-align : center;
+}
+
+.cbp-l-loadMore-text .cbp-l-loadMore-link,
+.cbp-l-loadMore-text .cbp-l-loadMore-text-link {
+  display         : block;
+  margin-top      : 50px;
+  color           : #7E7B7B;
+  text-decoration : none;
+  font-size       : 15px;
+  font-weight     : 400;
+  cursor          : pointer;
+}
+
+.cbp-l-loadMore-text .cbp-l-loadMore-stop,
+.cbp-l-loadMore-text .cbp-l-loadMore-text-stop {
+  color  : #B0B0B0;
+  cursor : default;
+}
+
+.cbp-mode-slider {
+  -webkit-transition : height 0.35s cubic-bezier(0.22, 0.6, 0.345, 1);
+  transition         : height 0.35s cubic-bezier(0.22, 0.6, 0.345, 1);
+}
+
+.cbp-mode-slider .cbp-item,
+.cbp-mode-slider .cbp-wrapper {
+  -webkit-transition : -webkit-transform 0.35s cubic-bezier(0.22, 0.6, 0.345, 1);
+  transition         : transform 0.35s cubic-bezier(0.22, 0.6, 0.345, 1);
+}
+
+.cbp-mode-slider .cbp-wrapper {
+  cursor : -webkit-grab;
+  cursor : -o-grab;
+  cursor : -ms-grab;
+  cursor : grab;
+}
+
+.cbp-mode-slider-dragStart * {
+  cursor : move !important;
+  cursor : -ms-grabbing !important;
+  cursor : -webkit-grabbing !important;
+  cursor : -moz-grabbing !important;
+  cursor : grabbing !important;
+}
+
+.cbp-mode-slider-dragStart .cbp-wrapper {
+  -webkit-transition : none;
+  transition         : none;
+}
+
+.cbp-nav-next,
+.cbp-nav-prev {
+  display     : inline-block;
+  position    : relative;
+  width       : 21px;
+  height      : 22px;
+  margin-left : 1px;
+  background  : #7c8b90;
+  cursor      : pointer;
+}
+
+.cbp-nav-next {
+  border-radius : 0 2px 2px 0;
+}
+
+.cbp-nav-prev {
+  border-radius : 2px 0 0 2px;
+}
+
+.cbp-nav-next:hover,
+.cbp-nav-prev:hover {
+  opacity : 0.8;
+}
+
+.cbp-nav-next:after,
+.cbp-nav-prev:after {
+  content    : '';
+  position   : absolute;
+  top        : 0;
+  right      : 0;
+  bottom     : 0;
+  left       : 0;
+  width      : 7px;
+  height     : 10px;
+  margin     : auto;
+  background : url("images/cbp-sprite.png") no-repeat;
+}
+
+.cbp-nav-next:after {
+  background-position : -134px 0;
+}
+
+.cbp-nav-prev:after {
+  background-position : -134px -12px;
+}
+
+.cbp-nav-stop {
+  opacity : 0.5 !important;
+  cursor  : default !important;
+}
+
+.cbp-nav {
+  -moz-user-select    : none;
+  -ms-user-select     : none;
+  -webkit-user-select : none;
+  user-select         : none;
+}
+
+.cbp-nav-controls {
+  z-index  : 100;
+  position : absolute;
+  top      : -51px;
+  right    : 0;
+}
+
+.cbp-nav-pagination {
+  z-index    : 100;
+  position   : absolute;
+  right      : 0;
+  bottom     : -30px;
+  left       : 0;
+  text-align : center;
+}
+
+.cbp-nav-pagination-item {
+  display            : inline-block;
+  position           : relative;
+  width              : 10px;
+  height             : 10px;
+  margin             : 0 4px;
+  border-radius      : 50%;
+  background         : #c2c2c2;
+  -webkit-transition : background 0.5s;
+  transition         : background 0.5s;
+  cursor             : pointer;
+}
+
+.cbp-nav-pagination-active {
+  background : #797979;
+}
+
+.cbp-pagination-item {
+  display      : inline-block;
+  position     : relative;
+  max-width    : 100px;
+  margin-top   : 10px;
+  margin-right : 5px;
+  cursor       : pointer;
+}
+
+.cbp-pagination-item img {
+  display : block;
+  width   : 100%;
+  height  : auto;
+  border  : 0;
+}
+
+.cbp-pagination-item:after {
+  content            : '';
+  position           : absolute;
+  top                : 0;
+  width              : 100%;
+  height             : 100%;
+  background         : rgba(0,0,0,0.5);
+  -webkit-transition : background .5s ease-in-out;
+  transition         : background .5s ease-in-out;
+}
+
+.cbp-pagination-active:after {
+  background : transparent;
+}
+
+.cbp-slider-item,
+.cbp-slider-wrap {
+  margin          : 0;
+  padding         : 0;
+  list-style-type : none;
+}
+
+.cbp-slider .cbp-nav-controls {
+  position : static;
+}
+
+.cbp-slider .cbp-nav-next,
+.cbp-slider .cbp-nav-prev {
+  z-index    : 100;
+  position   : absolute;
+  top        : 0;
+  bottom     : 0;
+  width      : 44px;
+  height     : 44px;
+  margin     : auto;
+  background : transparent;
+}
+
+.cbp-slider .cbp-nav-next {
+  right : 25px;
+  left  : auto;
+}
+
+.cbp-slider .cbp-nav-prev {
+  right : auto;
+  left  : 25px;
+}
+
+.cbp-slider .cbp-nav-next:after,
+.cbp-slider .cbp-nav-prev:after {
+  width      : 44px;
+  height     : 44px;
+  background : url("images/cbp-sprite.png") no-repeat;
+}
+
+.cbp-slider .cbp-nav-next:after {
+  background-position : -46px -92px;
+}
+
+.cbp-slider .cbp-nav-next:hover:after {
+  background-position : -46px -46px;
+}
+
+.cbp-slider .cbp-nav-prev:after {
+  background-position : 0 -92px;
+}
+
+.cbp-slider .cbp-nav-prev:hover:after {
+  background-position : 0 -46px;
+}
+
+.cbp-slider .cbp-nav-pagination {
+  right      : 25px;
+  bottom     : 20px;
+  left       : auto;
+  text-align : right;
+}
+
+.cbp-slider-edge .cbp-nav-controls {
+  position : static;
+}
+
+.cbp-slider-edge .cbp-nav-next,
+.cbp-slider-edge .cbp-nav-prev {
+  z-index    : 100;
+  position   : absolute;
+  top        : 0;
+  bottom     : 0;
+  width      : 44px;
+  height     : 44px;
+  margin     : auto;
+  background : transparent;
+}
+
+.cbp-slider-edge .cbp-nav-next {
+  right : -14px;
+  left  : auto;
+}
+
+.cbp-slider-edge .cbp-nav-prev {
+  right : auto;
+  left  : -14px;
+}
+
+.cbp-slider-edge .cbp-nav-next:after,
+.cbp-slider-edge .cbp-nav-prev:after {
+  width      : 9px;
+  height     : 16px;
+  background : url("images/cbp-sprite.png") no-repeat;
+}
+
+.cbp-slider-edge .cbp-nav-next:after {
+  background-position : -134px -24px;
+}
+
+.cbp-slider-edge .cbp-nav-prev:after {
+  background-position : -134px -42px;
+}
+
+.cbp-slider-edge .cbp-nav-pagination {
+  bottom : -50px;
+}
+
+.cbp-slider-edge .cbp-nav-pagination-item {
+  opacity    : 0.4;
+  border     : 2px solid #0f0f0f;
+  background : transparent;
+}
+
+.cbp-slider-edge .cbp-nav-pagination-active {
+  background : #000;
+}
+
+.cbp-slider-inline {
+  position : relative;
+}
+
+.cbp-slider-inline .cbp-slider-item {
+  position   : absolute;
+  top        : 0;
+  width      : 100%;
+  transition : left .5s ease;
+}
+
+.cbp-slider-inline .cbp-slider-item--active {
+  z-index  : 2;
+  position : relative;
+}
+
+.cbp-slider-wrapper {
+  position : relative;
+  overflow : hidden;
+}
+
+.cbp-slider-controls {
+  z-index            : 100;
+  position           : absolute;
+  top                : 0;
+  right              : 0;
+  opacity            : 0;
+  -webkit-transition : opacity .7s ease-in-out;
+  transition         : opacity .7s ease-in-out;
+}
+
+.cbp-slider-inline-ready .cbp-slider-controls {
+  opacity : 1;
+}
+
+.cbp-slider-next,
+.cbp-slider-prev {
+  position            : relative;
+  width               : 36px;
+  height              : 36px;
+  float               : left;
+  background          : #547EB1;
+  -moz-user-select    : none;
+  -ms-user-select     : none;
+  -webkit-user-select : none;
+  user-select         : none;
+  cursor              : pointer;
+}
+
+.cbp-slider-next {
+  margin-left : 1px;
+}
+
+.cbp-slider-next:after,
+.cbp-slider-prev:after {
+  content    : '';
+  position   : absolute;
+  top        : 0;
+  right      : 0;
+  bottom     : 0;
+  left       : 0;
+  width      : 9px;
+  height     : 16px;
+  margin     : auto;
+  background : url("images/cbp-sprite.png") no-repeat;
+}
+
+.cbp-slider-next:after {
+  background-position : -134px -60px;
+}
+
+.cbp-slider-prev:after {
+  background-position : -134px -78px;
+}
+
+.cbp-l-grid-agency .cbp-caption:after {
+  z-index       : 1;
+  content       : '';
+  position      : absolute;
+  bottom        : 0px;
+  left          : 50%;
+  width         : 0;
+  height        : 0;
+  margin-left   : -5px;
+  border-right  : 10px solid transparent;
+  border-bottom : 10px solid var(--electron-light);
+  border-left   : 10px solid transparent;
+}
+
+.cbp-l-grid-agency.cbp-caption-zoom .cbp-caption:hover .cbp-caption-defaultWrap {
+  -webkit-transform : scale(1.15);
+  transform         : scale(1.15);
+}
+
+.cbp-l-grid-agency-title {
+  margin-top  : 18px;
+  color       : #666;
+  text-align  : center;
+  font-size   : 17px;
+  font-weight : 700;
+  line-height : 24px;
+}
+
+.cbp-item:hover .cbp-l-grid-agency-title {
+  color : #222;
+}
+
+.cbp-l-grid-agency-desc {
+  color       : #aaa;
+  text-align  : center;
+  font-size   : 12px;
+  font-weight : 400;
+  line-height : 21px;
+}
+
+.cbp-l-grid-work.cbp-caption-zoom .cbp-caption-activeWrap {
+  background-color : rgba(0,0,0,0.7);
+}
+
+.cbp-l-grid-work .cbp-item {
+  padding : 3px;
+}
+
+.cbp-l-grid-work .cbp-item-wrapper {
+  padding          : 7px 7px 27px;
+  border-top       : 1px solid #F4F4F4;
+  background-color : var(--electron-light);
+  box-shadow       : 0 1px 1px rgba(0,0,0,0.2);
+}
+
+.cbp-l-grid-work-title {
+  display        : block;
+  margin-top     : 17px;
+  color          : #607D8B;
+  text-align     : center;
+  text-transform : uppercase;
+  font-size      : 17px;
+  font-weight    : 400;
+  line-height    : 25px;
+}
+
+.cbp-l-grid-work-title:hover {
+  color : #365D67;
+}
+
+.cbp-l-grid-work-desc {
+  color          : #888888;
+  text-align     : center;
+  text-transform : uppercase;
+  font-size      : 11px;
+  font-weight    : 400;
+  line-height    : 16px;
+}
+
+.cbp-l-grid-blog-title {
+  display     : block;
+  margin-top  : 17px;
+  color       : #444;
+  font-size   : 18px;
+  font-weight : 400;
+  line-height : 30px;
+}
+
+.cbp-l-grid-blog-title:hover {
+  color : #787878;
+}
+
+.cbp-l-grid-blog-date {
+  display     : inline-block;
+  color       : #787878;
+  font-size   : 12px;
+  font-weight : 400;
+  line-height : 18px;
+}
+
+.cbp-l-grid-blog-comments {
+  display     : inline-block;
+  color       : #3C6FBB;
+  font-size   : 12px;
+  font-weight : 400;
+  line-height : 18px;
+}
+
+.cbp-l-grid-blog-comments:hover {
+  opacity : .8;
+}
+
+.cbp-l-grid-blog-desc {
+  margin-top  : 9px;
+  color       : #9B9B9B;
+  font-size   : 13px;
+  font-weight : 400;
+  line-height : 18px;
+}
+
+.cbp-l-grid-blog-split {
+  display     : inline-block;
+  margin      : 0 4px;
+  color       : #787878;
+  font-size   : 13px;
+  font-weight : 400;
+  line-height : 16px;
+}
+
+.cbp-l-grid-clients {
+  height : 180px;
+}
+
+.cbp-l-clients-title-block {
+  margin-bottom : 40px;
+  color         : #666464;
+  text-align    : center;
+  font-size     : 32px;
+  font-weight   : 400;
+  line-height   : 53px;
+}
+
+.cbp-l-grid-faq .cbp-item {
+  width : 100%;
+}
+
+.cbp-l-grid-projects-title {
+  margin-top  : 15px;
+  color       : #474747;
+  font-size   : 14px;
+  font-weight : 700;
+  line-height : 21px;
+}
+
+.cbp-l-grid-projects-desc {
+  margin-top  : 5px;
+  color       : #888888;
+  font-size   : 12px;
+  font-weight : 400;
+  line-height : 18px;
+}
+
+.cbp-l-grid-masonry-projects .cbp-caption-activeWrap {
+  background-color : #59a3b6;
+  background-color : rgba(89,163,182,0.95);
+}
+
+.cbp-l-grid-masonry-projects .cbp-l-caption-buttonLeft,
+.cbp-l-grid-masonry-projects .cbp-l-caption-buttonRight {
+  background-color : #545454;
+}
+
+.cbp-l-grid-masonry-projects-title {
+  display     : block;
+  margin-top  : 12px;
+  color       : #59a3b6;
+  text-align  : center;
+  font-size   : 15px;
+  font-weight : 500;
+  line-height : 22px;
+}
+
+.cbp-l-grid-masonry-projects-title:hover {
+  color : #457C8B;
+}
+
+.cbp-l-grid-masonry-projects-desc {
+  color       : #b2b2b2;
+  text-align  : center;
+  font-size   : 12px;
+  font-weight : 400;
+  line-height : 18px;
+}
+
+.cbp-l-grid-team-name {
+  display     : block;
+  margin-top  : 18px;
+  color       : #456297;
+  text-align  : center;
+  font-size   : 17px;
+  font-weight : 400;
+  line-height : 24px;
+}
+
+.cbp-l-grid-team-name:hover {
+  color : #34425C;
+}
+
+.cbp-l-grid-team-position {
+  color       : #999;
+  text-align  : center;
+  font-size   : 13px;
+  font-weight : 400;
+  line-height : 21px;
+}
+
+.cbp-l-grid-mosaic-flat .cbp-caption-activeWrap {
+  background-color : #64C28E;
+  background-color : rgba(101,199,150,0.95);
+}
+
+.cbp-l-grid-mosaic-flat .cbp-l-caption-title {
+  display        : inline-block;
+  color          : #FFFFFF;
+  text-transform : uppercase;
+  font-size      : 14px;
+  font-weight    : 400;
+  line-height    : 21px;
+  letter-spacing : 2px;
+}
+
+.cbp-l-grid-mosaic-flat .cbp-l-caption-title:after {
+  content          : '';
+  display          : block;
+  width            : 40%;
+  height           : 1px;
+  margin           : 8px auto 0;
+  background-color : var(--electron-light);
+}
+
+.cbp-l-grid-mosaic-projects .cbp-caption-activeWrap {
+  background-color : #59a3b6;
+  background-color : rgba(89,163,182,0.97);
+}
+
+.cbp-l-grid-mosaic .cbp-caption-activeWrap {
+  background-color : #FFEA71;
+  background-color : rgba(255,234,113,0.95);
+}
+
+.cbp-l-grid-mosaic .cbp-l-caption-title {
+  margin-bottom  : 5px;
+  color          : #5A5A5A;
+  text-transform : uppercase;
+  font-size      : 18px;
+  font-weight    : 500;
+  line-height    : 22px;
+}
+
+.cbp-l-grid-mosaic .cbp-l-caption-desc {
+  color       : #585858;
+  font-size   : 13px;
+  font-weight : 400;
+  line-height : 20px;
+}
+
+.cbp-l-slider-title-block {
+  margin-bottom : 22px;
+  border-bottom : 1px solid #cdcdcd;
+}
+
+.cbp-l-slider-title-block div {
+  display       : inline-block;
+  margin-bottom : -1px;
+  padding       : 0 2px 6px 0;
+  color         : #5e5e5e;
+  border-bottom : 1px solid #a9a5a5;
+  font-size     : 15px;
+  line-height   : 21px;
+}
+
+.cbp-l-grid-slider-team-name {
+  float       : left;
+  margin-top  : 16px;
+  color       : #494949;
+  font-size   : 20px;
+  line-height : 30px;
+}
+
+.cbp-l-grid-slider-team-position {
+  clear       : both;
+  color       : #A6A6A6;
+  font-size   : 14px;
+  line-height : 21px;
+}
+
+.cbp-l-grid-slider-team-desc {
+  margin-top  : 15px;
+  color       : #969696;
+  font-size   : 13px;
+  line-height : 20px;
+}
+
+.cbp-l-grid-slider-team-social {
+  float      : right;
+  margin-top : 16px;
+}
+
+.cbp-l-grid-slider-team-social a {
+  margin-left : 6px;
+  color       : #737373;
+  line-height : 30px;
+}
+
+.cbp-l-grid-slider-team-social a:hover {
+  opacity : 0.8;
+}
+
+.cbp-l-slider-testimonials-wrap {
+  padding      : 80px 0 110px;
+  border-color : #dce1e2;
+  border-width : 1px 0;
+  border-style : solid;
+  background   : #f8f9f9;
+}
+
+.cbp-l-grid-slider-testimonials-body {
+  max-width   : 800px;
+  margin      : 0 auto;
+  padding     : 0 20px;
+  color       : #424242;
+  text-align  : center;
+  font-size   : 20px;
+  line-height : 32px;
+}
+
+.cbp-l-grid-slider-testimonials-footer {
+  margin-top    : 30px;
+  margin-bottom : 10px;
+  color         : #777;
+  text-align    : center;
+  font-size     : 12px;
+  line-height   : 19px;
+}
+
+.cbp-l-grid-tabs {
+  height : 100px;
+}
+
+.cbp-l-grid-tabs .cbp-item {
+  right       : 0;
+  width       : 100%;
+  max-width   : 700px;
+  margin      : 0 auto;
+  color       : #5a5a5a;
+  text-align  : center;
+  font-size   : 14px;
+  line-height : 24px;
+}
+
+.cbp-l-testimonials-title-block {
+  position      : relative;
+  margin-bottom : 60px;
+  color         : #E7E7E7;
+  text-align    : center;
+  font-size     : 26px;
+  line-height   : 36px;
+}
+
+.cbp-l-testimonials-title-block:after {
+  content          : '';
+  position         : absolute;
+  right            : 0;
+  bottom           : -6px;
+  left             : 0;
+  width            : 23px;
+  height           : 2px;
+  margin           : 0 auto;
+  background-color : #C2C2C2;
+}
+
+.cbp-l-testimonials-wrap {
+  padding    : 60px 0 110px;
+  background : #2D2D2D;
+}
+
+.cbp-l-grid-testimonials-body {
+  max-width   : 800px;
+  margin      : 0 auto;
+  padding     : 0 20px;
+  color       : #e7e7e7;
+  text-align  : center;
+  font-size   : 20px;
+  line-height : 32px;
+}
+
+.cbp-l-grid-testimonials-footer {
+  margin-top    : 35px;
+  margin-bottom : 40px;
+  color         : #C2C2C2;
+  text-align    : center;
+  font-size     : 12px;
+  line-height   : 19px;
+}
+
+.cbp-search {
+  position      : relative;
+  width         : 220px;
+  margin-bottom : 40px;
+}
+
+.cbp-search .cbp-search-nothing {
+  display : none;
+}
+
+.cbp-search-icon {
+  position       : absolute;
+  top            : 0;
+  right          : 0;
+  width          : 32px;
+  height         : 100%;
+  text-align     : center;
+  pointer-events : none;
+  cursor         : pointer;
+}
+
+.cbp-search-icon:after {
+  content        : '\f002';
+  color          : #797979;
+  font-family    : 'FontAwesome';
+  font-size      : 14px;
+  line-height    : 36px;
+  pointer-events : none;
+}
+
+.cbp-search-input {
+  width         : 100%;
+  height        : 36px;
+  margin        : 0;
+  padding       : 0 32px 0 12px;
+  border        : 1px solid #c6c3c4;
+  border-radius : 1px;
+  font-size     : 12px;
+  font-weight   : 400;
+}
+
+.cbp-search-input[value]+.cbp-search-icon {
+  pointer-events : auto;
+}
+
+.cbp-search-input[value]+.cbp-search-icon:after {
+  content : '\f00d';
+}
+
+.cbp-search-nothing {
+  position   : absolute;
+  top        : 0;
+  width      : 100%;
+  padding    : 0 0 30px;
+  text-align : center;
+  font-size  : 13px;
+}

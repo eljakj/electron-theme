@@ -1,0 +1,66 @@
+.redux-container-nt_multi_field ul.nt-multi-field {
+    margin: 0;
+    padding: 0
+}
+
+.nt-multi-field .nt-multi-field-list {
+    margin-bottom: 10px !important;
+}
+.nt-multi-field .nt-multi-field-list input.block {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.nt-multi-field .nt-multi-field-list input.block:last-child {
+    margin-bottom: 0px;
+}
+.nt-multi-field .nt-multi-field-list {
+    margin-bottom: 10px !important;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+.redux-container-nt_multi_field .nt-multi-field-add {
+    clear: both;
+    margin: 5px 0
+}
+
+.redux-container-nt_multi_field a.nt-multi-field-remove.deletion {
+    padding: 5px 15px;
+    margin-left: 0px;
+    margin-top: 10px;
+    display: inline-block;
+    background: #F00;
+    border-radius: 3px;
+    color: var(--electron-light);
+    text-decoration: none;
+}
+
+.redux-container-nt_multi_field a.nt-multi-field-remove.deletion:hover {
+    background: red;
+    color: var(--electron-light);
+    text-decoration: none
+}
+
+@media screen and (max-width: 782px) {
+    .redux-container-nt_multi_field input {
+        clear: both
+    }
+
+    .redux-container-nt_multi_field .nt-multi-field-remove {
+        margin: 0;
+        float: right
+    }
+}
+
+.wp-customizer .redux-container-nt_multi_field .button {
+    float: right
+}
+
+.wp-customizer .redux-container-nt_multi_field .nt-multi-field-remove {
+    float: right;
+    margin-bottom: 5px
+}
+
+.wp-customizer .redux-container-nt_multi_field ul.nt-multi-field input {
+    width: 100% !important
+}

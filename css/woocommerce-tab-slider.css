@@ -1,0 +1,414 @@
+body:not(.page-loaded) .swiper-autoheight .electron-swiper-wrapper {
+    display: flex;
+}
+.elementor-widget-electron-woo-tab-two:hover {
+    z-index: 100;
+}
+.electron-tab-wrapper.ajax-loaded .electron-products.loaded:not(.active) {
+    display: none;
+}
+
+.electron-tab-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 5;
+}
+.electron-tab-header .electron-tab-title {
+    margin: 0;
+}
+.electron-tab-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+.electron-tab-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1;
+    color: var(--electron-dark-soft);
+}
+.electron-tab-menu.menu-bordered a {
+    border: 1px solid var(--electron-border);
+    border-radius: 20px;
+    padding: 6px 15px;
+}
+.electron-tab-menu a.active,
+.electron-tab-menu a.active svg {
+    color: var(--electron-primary);
+    fill: var(--electron-primary);
+}
+.fast-filters a {
+    padding: 5px 8px;
+    min-height: 30px;
+    border: 1px solid var(--electron-border);
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+.fast-filters a:hover,
+.fast-filters a.active {
+    color: var(--electron-blue-dark);
+    background-color: var(--electron-blue-bg);
+    border-color: var(--electron-blue-soft);
+}
+.electron-tab-menu a svg {
+    width: 17px;
+    height: 17px;
+}
+.electron-tab-menu:not(.fast-filters) a:not(:last-child) {
+    padding-right: 10px;
+    border-right: 1px solid var(--electron-border);
+}
+.electron-tab-header .electron-tab-button.electron-btn,
+.electron-tab-header .electron-btn-text.electron-btn,
+.electron-tab-header .electron-btn-text.electron-btn:hover{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.electron-tab-button.icon-after {
+    flex-direction: row-reverse;
+}
+.electron-tab-content.has-banner {
+    display: flex;
+    gap: 20px;
+    --gap: 20px;
+}
+.electron-tab-content.banner-none {
+    display: block;
+}
+.has-banner .electron-tab-products {
+    flex: 1;
+}
+.layout-slider .has-banner .electron-tab-products{
+    flex: 1 0 auto;
+}
+.electron-tab-banner {
+    position: relative;
+    overflow: hidden;
+}
+.electron-tab-banner-content,
+.electron-tab-banner.fit_image img,
+.electron-tab-wrapper .electron-banner-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+.electron-tab-banner iframe,
+.electron-tab-banner video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    max-width: none;
+}
+.electron-tab-banner.fit_image img {
+    object-fit: cover;
+    -webkit-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    z-index: 0;
+}
+.electron-tab-wrapper .electron-tab-banner:hover img {
+    transform: scale(1.2);
+}
+.electron-tab-banner-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15px;
+    z-index: 2;
+    flex-wrap: wrap;
+}
+.electron-banner-subtitle {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.4;
+}
+.electron-banner-title {
+    margin: 0;
+}
+.electron-tab-wrapper .electron-banner-link {
+    z-index: 3;
+}
+.electron-tab-wrapper .electron-banner-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: var(--electron-light);
+    background: var(--electron-dark);
+    gap: 14px;
+}
+.electron-tab-footer {
+    font-size: 11px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+.electron-tab-footer a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--electron-green);
+}
+.electron-tab-banner-content .icon-after,
+.electron-tab-footer .icon-after {
+    flex-direction: row-reverse;
+}
+
+.electron-tab-banner-content .has-icon svg,
+.electron-tab-footer .electron-footer-link svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+}
+.electron-tab-wrapper .electron-shop-fast-filters {
+    margin-bottom: 0;
+}
+.electron-tab-wrapper .electron-swiper-container .electron-swiper-prev,
+.electron-tab-wrapper .electron-swiper-container .electron-swiper-next {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--electron-light);
+    background-color: var(--electron-primary);
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+}
+.electron-tab-wrapper .electron-swiper-container .electron-swiper-next {
+    right: 0;
+    left: auto;
+}
+.layout-slider .electron-swiper-container:hover .electron-swiper-prev,
+.layout-slider .electron-swiper-container:hover .electron-swiper-next {
+    opacity: 1;
+    visibility: visible;
+    color: var(--electron-light);
+    background-color: var(--electron-primary);
+}
+.style-1 .electron-tab-header {
+    padding: 20px;
+    border: 1px solid var(--electron-green);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.style-1 .electron-tab-footer {
+    margin-top: 20px;
+}
+.style-4 .electron-tab-header {
+    border-bottom: 2px solid;
+    border-color: var(--electron-border);
+    padding-bottom: 10px;
+}
+
+.style-5 .electron-tab-header {
+    border-bottom: 2px solid;
+    border-color: var(--electron-border);
+    background: var(--electron-gray-soft);
+    padding: 20px 20px;
+}
+
+.style-6 .electron-tab-header {
+    margin-bottom: 0;
+    border: 2px solid;
+    border-bottom: 0;
+    border-color: var(--electron-border);
+    background: var(--electron-gray-soft);
+    padding: 20px 20px;
+}
+
+.style-6 .electron-tab-content {
+    gap: 15px;
+    --gap: 15px;
+    flex-direction: row;
+    --flex-direction: row;
+    width: var(--flex-direction);
+    padding: 30px;
+    border: 2px solid #eee;
+    border-top: 0;
+}
+
+.electron-tab-wrapper.style-2>div,
+.electron-tab-wrapper.style-3>div {
+    padding: 20px;
+}
+.electron-tab-wrapper.style-2>div,
+.electron-tab-wrapper.style-3>div {
+    padding: 20px;
+}
+.electron-tab-wrapper.style-2>div.electron-tab-footer,
+.electron-tab-wrapper.style-3>div.electron-tab-footer {
+    padding-top: 0px;
+}
+
+.electron-tab-wrapper.style-2 {
+    border: 2px solid var(--electron-green);
+    border-radius: 10px;
+    background-color: var(--electron-success-bg);
+}
+.electron-tab-wrapper.style-3 {
+    border: 2px solid var(--electron-green);
+    border-radius: 10px;
+}
+
+.electron-tab-wrapper.style-2 .electron-tab-header,
+.electron-tab-wrapper.style-3 .electron-tab-header {
+    border-bottom: 2px solid var(--electron-green);
+}
+
+.electron-tab-wrapper.style-2 .electron-loop-product,
+.electron-tab-wrapper.style-2 .electron-product-type-6 .electron-product-details-wrapper,
+.electron-tab-wrapper.style-2 .fast-filters a{
+    border-color: var(--electron-green-soft);
+}
+.electron-tab-wrapper.style-2 .electron-btn-primary {
+    border-color: var(--electron-green);
+    background-color: var(--electron-green);
+}
+.fast-filters-trigger {
+    display: none;
+}
+.electron-tab-wrapper .electron-woocommerce-pagination {
+    margin-top: 20px;
+}
+.attr-wrapper {
+    padding: 10px 15px;
+    border: 2px solid var(--electron-green);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1;
+}
+.terms-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+}
+.terms-menu .term-color {
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--electron-border);
+    border-radius: 10px;
+}
+
+@media(max-width: 800px) {
+    .fast-filters-trigger {
+        display: inline-flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        gap: 5px;
+        background: var(--electron-light);
+        padding: 5px 10px;
+        border-radius: 5px;
+        z-index: 5;
+        border: 1px solid;
+        border-color: var(--electron-border);
+    }
+    .fast-filters-trigger svg {
+        max-width: 16px;
+        max-height: 16px;
+        fill: var(--electron-gray);
+    }
+    .fast-filters-trigger svg g {
+        fill: var(--electron-dark);
+    }
+    .electron-tab-menu {
+        position: absolute;
+        width: 100%;
+        flex-wrap: wrap;
+        top: calc(100% + 0px);
+        left: 0;
+        right: 0;
+        border: 1px solid var(--electron-border);
+        z-index: 1;
+        border-radius: 5px;
+        padding: 20px 15px;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+    }
+    .electron-tab-menu.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .electron-tab-header .electron-tab-title {
+        margin: 0;
+        max-width: 28%;
+    }
+
+    .electron-tab-wrapper.style-3>div {
+        padding: 15px;
+    }
+
+    .electron-tab-header {
+        gap: 5px;
+    }
+
+}
+
+.shop-loop-wrapper.pagination-loadmore .electron-woocommerce-pagination,
+.shop-loop-wrapper.pagination-infinite .electron-woocommerce-pagination {
+    display: none;
+}
+
+.shop-loadmore-wrapper {
+    margin-top: 30px;
+    text-align: center;
+}
+.shop-loadmore-wrapper a.loading {
+    pointer-events: none;
+}
+.shop-loop-wrapper .nt-pagination {
+    margin-top: 30px;
+}
+
+.electron-tab-button.electron-btn>span {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.electron-tab-button>span:before {
+    content: attr(data-hover);
+    transition: all 0.25s cubic-bezier(0.310, -0.105, 0.430, 1.400);
+}
+
+.electron-tab-button>span:after {
+    position: absolute;
+    top: 100%;
+    content: attr(data-hover);
+    transition: all 0.35s cubic-bezier(0.310, -0.105, 0.430, 1.400);
+}
+.electron-tab-button:hover>span:after,
+.electron-tab-button:hover>span:before {
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    transform: translateY(-100%);
+    transition: all 0.2s cubic-bezier(0.210, -0.105, 0.430, 1.400);
+}

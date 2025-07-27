@@ -1,0 +1,82 @@
+
+ul.electron-remove-filter li {
+    display: inline-block;
+    margin-right: 15px;
+}
+ul.electron-remove-filter li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nt-sidebar-inner a span.remove-filter,
+ul.electron-remove-filter li a span.remove-filter {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    background-color: var(--electron-bg-soft);
+    margin-right: 5px;
+    border-radius: 50px;
+}
+.nt-sidebar-inner li a:hover span.remove-filter,
+ul.electron-remove-filter li a:hover span.remove-filter {
+    background-color: var(--electron-gray);
+}
+ul.electron-remove-filter li a.clear-all span.remove-filter {
+    background-color: var(--electron-black);
+}
+
+.electron-remove-filter li:first-child a span.remove-filter:before, .electron-remove-filter li:first-child a span.remove-filter:after {
+     background-color: #fff !important;
+}
+.nt-sidebar-inner li a span.remove-filter:before,
+.nt-sidebar-inner li a span.remove-filter:after,
+.electron-remove-filter li a span.remove-filter:before,
+.electron-remove-filter li a span.remove-filter:after {
+    content: "";
+    width: 7px;
+    height: 1px;
+    position: absolute;
+    left: 4px;
+    top: 7px;
+    display: inline-block;
+    background-color: var(--electron-black) !important;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+.nt-sidebar-inner li a span.remove-filter,
+.electron-remove-filter li a {
+    position: relative;
+    color: var(--electron-black);
+    letter-spacing: 0.2px;
+    cursor: pointer;
+}
+
+.nt-sidebar-inner li a span.remove-filter:before,
+.electron-remove-filter li a span.remove-filter:before {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.nt-sidebar-inner li a span.remove-filter:after,
+.electron-remove-filter li a span.remove-filter:after {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+}
+
+.nt-sidebar-inner li a:hover span.remove-filter:before,
+.nt-sidebar-inner li a:hover span.remove-filter:after,
+.electron-remove-filter li a:hover span.remove-filter:before,
+.electron-remove-filter li a:hover span.remove-filter:after {
+    -webkit-transform: rotate(0);
+    -ms-transform: rotate(0);
+    transform: rotate(0);
+}
+
+.filters-container .nav-tabs.nav-tab-box {
+    display: inline-block;
+}
